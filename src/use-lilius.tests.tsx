@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react-hooks";
-import { addYears, getYear, set, subYears } from "date-fns";
+import { addYears, getYear, set, startOfToday, subYears } from "date-fns";
 
 import { Month, useLilius } from "./use-lilius";
 
@@ -69,6 +69,15 @@ describe("viewing", () => {
 
       act(() => result.current.setViewing(date));
       expect(result.current.viewing).toStrictEqual(date);
+    });
+  });
+
+  describe("viewToday", () => {
+    it("sets the viewing date to today", () => {
+      const { result } = renderHook(() => useLilius({ viewing: getDate({ year: 1999 }) }));
+
+      act(() => result.current.viewToday());
+      expect(result.current.viewing).toStrictEqual(startOfToday());
     });
   });
 
