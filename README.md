@@ -1,13 +1,14 @@
 # use-lilius
 
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Mezzobusto-Lilio-Capoano.jpg/175px-Mezzobusto-Lilio-Capoano.jpg">
+</p>
+
 > A headless calendar hook for React.
 
 [![npm](https://img.shields.io/npm/v/use-lilius)](https://www.npmjs.com/package/use-lilius)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dannytatom/use-lilius/test)
 ![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/dannytatom/use-lilius)
-
-The goal of `use-lilius` is to provide all the functionality necessary
-to build a calendar or date-picker while leaving the UI & UX up to you.
 
 ## Installation
 
