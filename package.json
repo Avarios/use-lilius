@@ -2,7 +2,12 @@
   "name": "use-lilius",
   "version": "1.0.0",
   "description": "A headless calendar hook for React.",
-  "keywords": ["react", "calendar", "datepicker", "date-fns"],
+  "keywords": [
+    "react",
+    "calendar",
+    "datepicker",
+    "date-fns"
+  ],
   "author": "Danny Tatom <its.danny@hey.com>",
   "license": "MIT",
   "repository": {
@@ -26,6 +31,7 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "build-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs/ src/use-lilius.ts",
     "build": "rollup -c",
     "release": "standard-version",
     "prepare": "husky install"
@@ -71,6 +77,8 @@
     "standard-version": "^9.1.1",
     "ts-jest": "^26.5.3",
     "tslib": "^2.1.0",
+    "typedoc": "^0.20.32",
+    "typedoc-plugin-markdown": "^3.6.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {

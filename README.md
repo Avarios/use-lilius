@@ -23,8 +23,9 @@ Be sure you have the peer dependencies installed:
 
 ## Usage
 
-See [Storybook](https://use-lilius.vercel.app/) for some examples
-built with `use-lilius` and [Chakra](https://chakra-ui.com/).
+- The [API docs](docs/README.md) should help you get started.
+- See [Storybook](https://use-lilius.vercel.app/) for some
+examples built with `use-lilius` and [Chakra](https://chakra-ui.com/).
 
 ## Shout-Outs
 
@@ -35,4 +36,4 @@ enough to roll your own with it.
 
 ## LICENSE
 
-[MIT](https://github.com/dannytatom/use-lilius/blob/main/LICENSE)
+[MIT](LICENSE)
