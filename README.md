@@ -22,8 +22,8 @@ Be sure you have the peer dependencies installed:
 
 ## Usage
 
-See [Storybook](https://use-lilius.vercel.app/) for API details and
-some examples built with `use-lilius` and [Chakra](https://chakra-ui.com/).
+See [Storybook](https://use-lilius.vercel.app/) for some examples
+built with `use-lilius` and [Chakra](https://chakra-ui.com/).
 
 ## Shout-Outs
 
