@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ChakraProvider } from "@chakra-ui/react"
+import { MultiSelect } from "./multi-select";
+import { theme } from "./datepicker.theme"
+
+<Meta
+  title="Datepicker/Multi Select"
+  component={MultiSelect}
+/>
+
+A multi-select datepicker using [⚡ Chakra](https://chakra-ui.com/).
+
+> 🔎 [Source](https://github.com/dannytatom/use-lilius/blob/main/examples/datepicker/multi-select.tsx)
+
+<ChakraProvider theme={theme}>
+  <MultiSelect />
+</ChakraProvider>

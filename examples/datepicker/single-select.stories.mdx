@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ChakraProvider } from "@chakra-ui/react"
+import { SingleSelect } from "./single-select";
+import { theme } from "./datepicker.theme"
+
+<Meta
+  title="Datepicker/Single Select"
+  component={SingleSelect}
+/>
+
+A single-select datepicker using [⚡ Chakra](https://chakra-ui.com/).
+
+> 🔎 [Source](https://github.com/dannytatom/use-lilius/blob/main/examples/datepicker/single-select.tsx)
+
+<ChakraProvider theme={theme}>
+  <SingleSelect />
+</ChakraProvider>
