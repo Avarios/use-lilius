@@ -2,9 +2,13 @@
   "name": "use-lilius",
   "version": "1.0.0",
   "description": "A headless calendar hook for React.",
-  "repository": "https://github.com/dannytatom/use-lilius",
+  "keywords": ["react", "calendar", "datepicker", "date-fns"],
   "author": "Danny Tatom <its.danny@hey.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dannytatom/use-lilius.git"
+  },
   "main": "build/index.js",
   "module": "build/index.es.js",
   "types": "build/use-lilius.d.ts",
