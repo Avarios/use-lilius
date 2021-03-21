@@ -20,7 +20,7 @@ The initial date(s) selection.
 
 **`default`** []
 
-Defined in: [use-lilius.ts:66](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L66)
+Defined in: [use-lilius.ts:67](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L67)
 
 ___
 
@@ -32,7 +32,7 @@ The initial viewing date.
 
 **`default`** new Date()
 
-Defined in: [use-lilius.ts:59](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L59)
+Defined in: [use-lilius.ts:60](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L60)
 
 ___
 
@@ -44,4 +44,4 @@ What day a week starts on within the calendar matrix.
 
 **`default`** Day.SUNDAY
 
-Defined in: [use-lilius.ts:52](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L52)
+Defined in: [use-lilius.ts:53](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L53)

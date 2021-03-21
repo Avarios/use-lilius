@@ -24,6 +24,7 @@
 - [viewNextYear](returns.md#viewnextyear)
 - [viewPreviousMonth](returns.md#viewpreviousmonth)
 - [viewPreviousYear](returns.md#viewpreviousyear)
+- [viewToday](returns.md#viewtoday)
 - [viewYear](returns.md#viewyear)
 - [viewing](returns.md#viewing)
 
@@ -35,7 +36,7 @@
 
 A matrix of days based on the current viewing date.
 
-Defined in: [use-lilius.ts:171](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L171)
+Defined in: [use-lilius.ts:176](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L176)
 
 ___
 
@@ -51,9 +52,9 @@ Reset the selected dates to [].
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:136](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L136)
+Defined in: [use-lilius.ts:141](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L141)
 
-Defined in: [use-lilius.ts:136](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L136)
+Defined in: [use-lilius.ts:141](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L141)
 
 ___
 
@@ -75,9 +76,9 @@ Name | Type |
 
 **Returns:** Date
 
-Defined in: [use-lilius.ts:73](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L73)
+Defined in: [use-lilius.ts:74](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L74)
 
-Defined in: [use-lilius.ts:73](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L73)
+Defined in: [use-lilius.ts:74](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L74)
 
 ___
 
@@ -99,9 +100,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:151](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L151)
+Defined in: [use-lilius.ts:156](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L156)
 
-Defined in: [use-lilius.ts:151](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L151)
+Defined in: [use-lilius.ts:156](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L156)
 
 ___
 
@@ -124,9 +125,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:166](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L166)
+Defined in: [use-lilius.ts:171](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L171)
 
-Defined in: [use-lilius.ts:166](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L166)
+Defined in: [use-lilius.ts:171](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L171)
 
 ___
 
@@ -150,9 +151,9 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [use-lilius.ts:78](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L78)
+Defined in: [use-lilius.ts:79](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L79)
 
-Defined in: [use-lilius.ts:78](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L78)
+Defined in: [use-lilius.ts:79](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L79)
 
 ___
 
@@ -174,9 +175,9 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [use-lilius.ts:141](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L141)
+Defined in: [use-lilius.ts:146](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L146)
 
-Defined in: [use-lilius.ts:141](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L141)
+Defined in: [use-lilius.ts:146](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L146)
 
 ___
 
@@ -199,9 +200,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:146](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L146)
+Defined in: [use-lilius.ts:151](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L151)
 
-Defined in: [use-lilius.ts:146](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L146)
+Defined in: [use-lilius.ts:151](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L151)
 
 ___
 
@@ -225,9 +226,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:161](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L161)
+Defined in: [use-lilius.ts:166](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L166)
 
-Defined in: [use-lilius.ts:161](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L161)
+Defined in: [use-lilius.ts:166](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L166)
 
 ___
 
@@ -237,7 +238,7 @@ ___
 
 The dates currently selected.
 
-Defined in: [use-lilius.ts:126](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L126)
+Defined in: [use-lilius.ts:131](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L131)
 
 ___
 
@@ -247,7 +248,7 @@ ___
 
 Override the currently selected dates.
 
-Defined in: [use-lilius.ts:131](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L131)
+Defined in: [use-lilius.ts:136](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L136)
 
 ___
 
@@ -258,7 +259,7 @@ ___
 Set the date represented in the calendar matrix. Note that
 the month and year are the only parts used.
 
-Defined in: [use-lilius.ts:91](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L91)
+Defined in: [use-lilius.ts:91](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L91)
 
 ___
 
@@ -281,9 +282,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:156](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L156)
+Defined in: [use-lilius.ts:161](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L161)
 
-Defined in: [use-lilius.ts:156](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L156)
+Defined in: [use-lilius.ts:161](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L161)
 
 ___
 
@@ -305,9 +306,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:96](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L96)
+Defined in: [use-lilius.ts:101](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L101)
 
-Defined in: [use-lilius.ts:96](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L96)
+Defined in: [use-lilius.ts:101](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L101)
 
 ___
 
@@ -323,9 +324,9 @@ Set the viewing date to the month after the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:106](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L106)
+Defined in: [use-lilius.ts:111](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L111)
 
-Defined in: [use-lilius.ts:106](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L106)
+Defined in: [use-lilius.ts:111](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L111)
 
 ___
 
@@ -341,9 +342,9 @@ Set the viewing date to the year after the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:121](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L121)
+Defined in: [use-lilius.ts:126](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L126)
 
-Defined in: [use-lilius.ts:121](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L121)
+Defined in: [use-lilius.ts:126](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L126)
 
 ___
 
@@ -359,9 +360,9 @@ Set the viewing date to the month before the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:101](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L101)
+Defined in: [use-lilius.ts:106](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L106)
 
-Defined in: [use-lilius.ts:101](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L101)
+Defined in: [use-lilius.ts:106](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L106)
 
 ___
 
@@ -377,9 +378,27 @@ Set the viewing date to the year before the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:116](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L116)
+Defined in: [use-lilius.ts:121](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L121)
 
-Defined in: [use-lilius.ts:116](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L116)
+Defined in: [use-lilius.ts:121](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L121)
+
+___
+
+### viewToday
+
+• **viewToday**: () => *void*
+
+Set the viewing date to today.
+
+#### Type declaration:
+
+▸ (): *void*
+
+**Returns:** *void*
+
+Defined in: [use-lilius.ts:96](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L96)
+
+Defined in: [use-lilius.ts:96](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L96)
 
 ___
 
@@ -401,9 +420,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:111](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L111)
+Defined in: [use-lilius.ts:116](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L116)
 
-Defined in: [use-lilius.ts:111](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L111)
+Defined in: [use-lilius.ts:116](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L116)
 
 ___
 
@@ -414,4 +433,4 @@ ___
 The date represented in the calendar matrix. Note that
 the month and year are the only parts used.
 
-Defined in: [use-lilius.ts:85](https://github.com/dannytatom/use-lilius/blob/1b2b22d/src/use-lilius.ts#L85)
+Defined in: [use-lilius.ts:85](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L85)
