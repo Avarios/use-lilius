@@ -45,15 +45,19 @@ export enum Day {
 
 export interface Options {
   /**
+   * What day a week starts on within the calendar matrix.
+   *
    * @default Day.SUNDAY
    */
   weekStartsOn?: Day;
+
   /**
    * The initial viewing date.
    *
    * @default new Date()
    */
   viewing?: Date;
+
   /**
    * The initial date(s) selection.
    *
@@ -62,19 +66,120 @@ export interface Options {
   selected?: Date[];
 }
 
+export interface Returns {
+  /**
+   * Returns a copy of the given date with the time set to 00:00:00:00.
+   */
+  clearTime: (date: Date) => Date;
+
+  /**
+   * Returns whether or not a date is between 2 other dates (inclusive).
+   */
+  inRange: (date: Date, min: Date, max: Date) => boolean;
+
+  /**
+   * The date represented in the calendar matrix. Note that
+   * the month and year are the only parts used.
+   */
+
+  viewing: Date;
+
+  /**
+   * Set the date represented in the calendar matrix. Note that
+   * the month and year are the only parts used.
+   */
+  setViewing: React.Dispatch<React.SetStateAction<Date>>;
+
+  /**
+   * Set the viewing date to the given month.
+   */
+  viewMonth: (month: Month) => void;
+
+  /**
+   * Set the viewing date to the month before the current.
+   */
+  viewPreviousMonth: () => void;
+
+  /**
+   * Set the viewing date to the month after the current.
+   */
+  viewNextMonth: () => void;
+
+  /**
+   * Set the viewing date to the given year.
+   */
+  viewYear: (year: number) => void;
+
+  /**
+   * Set the viewing date to the year before the current.
+   */
+  viewPreviousYear: () => void;
+
+  /**
+   * Set the viewing date to the year after the current.
+   */
+  viewNextYear: () => void;
+
+  /**
+   * The dates currently selected.
+   */
+  selected: Date[];
+
+  /**
+   * Override the currently selected dates.
+   */
+  setSelected: React.Dispatch<React.SetStateAction<Date[]>>;
+
+  /**
+   * Reset the selected dates to [].
+   */
+  clearSelected: () => void;
+
+  /**
+   * Determine whether or not a date has been selected.
+   */
+  isSelected: (date: Date) => boolean;
+
+  /**
+   * Select one or more dates.
+   */
+  select: (date: Date | Date[], replaceExisting?: boolean) => void;
+
+  /**
+   * Deselect one or more dates.
+   */
+  deselect: (date: Date | Date[]) => void;
+
+  /**
+   * Toggle the selection of a date.
+   */
+  toggle: (date: Date, replaceExisting?: boolean) => void;
+
+  /**
+   * Select a range of dates (inclusive).
+   */
+  selectRange: (start: Date, end: Date, replaceExisting?: boolean) => void;
+
+  /**
+   * Deselect a range of dates (inclusive).
+   */
+  deselectRange: (start: Date, end: Date) => void;
+
+  /**
+   * A matrix of days based on the current viewing date.
+   */
+  calendar: Date[][];
+}
+
 export const useLilius = ({
   weekStartsOn = Day.SUNDAY,
   viewing: initialViewing = new Date(),
   selected: initialSelected = [],
-}: Options = {}) => {
-  // Helpers
-
+}: Options = {}): Returns => {
   const clearTime = (date: Date) => set(date, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
   const inRange = (date: Date, min: Date, max: Date) =>
     (isEqual(date, min) || isAfter(date, min)) && (isEqual(date, max) || isBefore(date, max));
-
-  // Viewing
 
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
@@ -89,8 +194,6 @@ export const useLilius = ({
   const viewPreviousYear = () => setViewing(subYears(viewing, 1));
 
   const viewNextYear = () => setViewing(addYears(viewing, 1));
-
-  // Date Selection
 
   const [selected, setSelected] = useState<Date[]>(initialSelected);
 
@@ -135,11 +238,7 @@ export const useLilius = ({
     );
   };
 
-  // Calendar Matrix
-
   const [calendar, setCalendar] = useState<Date[][]>([]);
-
-  // Update the calendar matrix when the date viewed changes.
 
   useEffect(() => {
     const matrix = eachWeekOfInterval(
@@ -150,109 +249,26 @@ export const useLilius = ({
     setCalendar(matrix);
   }, [viewing]);
 
-  // Return all the things!
-
   return {
-    /**
-     * Returns a copy of the given date with the time set to 00:00:00:00.
-     */
     clearTime,
-
-    /**
-     * Returns whether or not a date is between 2 other dates (inclusive).
-     */
     inRange,
-
-    /**
-     * The date represented in the calendar matrix. Note that
-     * the month and year are the only parts used.
-     */
     viewing,
-
-    /**
-     * Set the date represented in the calendar matrix. Note that
-     * the month and year are the only parts used.
-     */
     setViewing,
-
-    /**
-     * Set the viewing date to the given month.
-     */
     viewMonth,
-
-    /**
-     * Set the viewing date to the month before the current.
-     */
     viewPreviousMonth,
-
-    /**
-     * Set the viewing date to the month after the current.
-     */
     viewNextMonth,
-
-    /**
-     * Set the viewing date to the given year.
-     */
     viewYear,
-
-    /**
-     * Set the viewing date to the year before the current.
-     */
     viewPreviousYear,
-
-    /**
-     * Set the viewing date to the year after the current.
-     */
     viewNextYear,
-
-    /**
-     * The dates currently selected.
-     */
     selected,
-
-    /**
-     * Override the currently selected dates.
-     */
     setSelected,
-
-    /**
-     * Reset the selected dates to [].
-     */
     clearSelected,
-
-    /**
-     * Determine whether or not a date has been selected.
-     */
     isSelected,
-
-    /**
-     * Select one or more dates.
-     */
     select,
-
-    /**
-     * Deselect one or more dates.
-     */
     deselect,
-
-    /**
-     * Toggle the selection of a date.
-     */
     toggle,
-
-    /**
-     * Select a range of dates (inclusive).
-     */
     selectRange,
-
-    /**
-     * Deselect a range of dates (inclusive).
-     */
     deselectRange,
-
-    /**
-     * A matrix of days based on the current viewing date.
-     */
     calendar,
   };
 };
