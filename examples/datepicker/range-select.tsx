@@ -23,7 +23,6 @@ import {
   isEqual,
   isToday,
   startOfMonth,
-  startOfToday,
   startOfWeek,
 } from "date-fns";
 import React, { useState } from "react";
@@ -40,10 +39,10 @@ export const RangeSelect: React.FC = () => {
     select,
     selected,
     selectRange,
-    setViewing,
     viewing,
     viewNextMonth,
     viewPreviousMonth,
+    viewToday,
   } = useLilius();
 
   const styles = useMultiStyleConfig("Datepicker", {});
@@ -192,7 +191,7 @@ export const RangeSelect: React.FC = () => {
             <Divider sx={styles.divider} />
 
             <ButtonGroup sx={styles.todayButtonGroup}>
-              <Button onClick={() => setViewing(startOfToday())} size="sm" sx={styles.todayButton}>
+              <Button onClick={viewToday} size="sm" sx={styles.todayButton}>
                 Today
               </Button>
             </ButtonGroup>

@@ -12,6 +12,7 @@ import {
   setMonth,
   setYear,
   startOfMonth,
+  startOfToday,
   startOfWeek,
   subMonths,
   subYears,
@@ -81,7 +82,6 @@ export interface Returns {
    * The date represented in the calendar matrix. Note that
    * the month and year are the only parts used.
    */
-
   viewing: Date;
 
   /**
@@ -89,6 +89,11 @@ export interface Returns {
    * the month and year are the only parts used.
    */
   setViewing: React.Dispatch<React.SetStateAction<Date>>;
+
+  /**
+   * Set the viewing date to today.
+   */
+  viewToday: () => void;
 
   /**
    * Set the viewing date to the given month.
@@ -183,6 +188,8 @@ export const useLilius = ({
 
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
+  const viewToday = () => setViewing(startOfToday());
+
   const viewMonth = (month: Month) => setViewing(setMonth(viewing, month));
 
   const viewPreviousMonth = () => setViewing(subMonths(viewing, 1));
@@ -254,6 +261,7 @@ export const useLilius = ({
     inRange,
     viewing,
     setViewing,
+    viewToday,
     viewMonth,
     viewPreviousMonth,
     viewNextMonth,

@@ -16,7 +16,7 @@ import {
   useMultiStyleConfig,
   usePrevious,
 } from "@chakra-ui/react";
-import { endOfMonth, format, getDay, isToday, startOfMonth, startOfToday } from "date-fns";
+import { endOfMonth, format, getDay, isToday, startOfMonth } from "date-fns";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { IoCalendarClearSharp, IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
 
@@ -28,11 +28,11 @@ export const MultiSelect: React.FC = () => {
     inRange,
     isSelected,
     selected,
-    setViewing,
     toggle,
     viewing,
     viewNextMonth,
     viewPreviousMonth,
+    viewToday,
   } = useLilius();
 
   const styles = useMultiStyleConfig("Datepicker", {});
@@ -196,7 +196,7 @@ export const MultiSelect: React.FC = () => {
             <Divider sx={styles.divider} />
 
             <ButtonGroup sx={styles.todayButtonGroup}>
-              <Button onClick={() => setViewing(startOfToday())} size="sm" sx={styles.todayButton}>
+              <Button onClick={viewToday} size="sm" sx={styles.todayButton}>
                 Today
               </Button>
             </ButtonGroup>

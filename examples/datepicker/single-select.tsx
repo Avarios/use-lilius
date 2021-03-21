@@ -27,7 +27,6 @@ import {
   lastDayOfMonth,
   parse,
   startOfMonth,
-  startOfToday,
 } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { IoCalendarClearSharp, IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
@@ -48,6 +47,7 @@ export const SingleSelect: React.FC = () => {
     viewing,
     viewNextMonth,
     viewPreviousMonth,
+    viewToday,
   } = useLilius();
 
   const styles = useMultiStyleConfig("Datepicker", {});
@@ -221,7 +221,7 @@ export const SingleSelect: React.FC = () => {
             <Divider sx={styles.divider} />
 
             <ButtonGroup sx={styles.todayButtonGroup}>
-              <Button onClick={() => setViewing(startOfToday())} size="sm" sx={styles.todayButton}>
+              <Button onClick={viewToday} size="sm" sx={styles.todayButton}>
                 Today
               </Button>
             </ButtonGroup>
