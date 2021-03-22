@@ -57,7 +57,7 @@ export const SingleSelect: React.FC = () => {
 
   // Only accept digits and forward slash as input.
   const onInputChange = (input: string) => {
-    setInputValue(input.trim().replace(/[^\d|/]+/g, ""));
+    setInputValue(input.trim().replace(/[^\d/]+/g, ""));
   };
 
   // When the input field loses focus, we need to parse
