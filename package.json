@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dannytatom/use-lilius.git"
+    "url": "https://github.com/its-danny/use-lilius.git"
   },
   "main": "build/index.js",
   "module": "build/index.es.js",

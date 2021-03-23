@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help improve use-lilius
 title: ''
 labels: bug
-assignees: dannytatom
+assignees: its-danny
 
 ---
 

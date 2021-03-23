@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for use-lilius
 title: ''
 labels: enhancement
-assignees: dannytatom
+assignees: its-danny
 
 ---
 
