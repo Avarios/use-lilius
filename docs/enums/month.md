@@ -25,7 +25,7 @@
 
 • **APRIL**: = 3
 
-Defined in: [use-lilius.ts:26](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L26)
+Defined in: [use-lilius.ts:26](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L26)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 • **AUGUST**: = 7
 
-Defined in: [use-lilius.ts:30](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L30)
+Defined in: [use-lilius.ts:30](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L30)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **DECEMBER**: = 11
 
-Defined in: [use-lilius.ts:34](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L34)
+Defined in: [use-lilius.ts:34](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L34)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **FEBRUARY**: = 1
 
-Defined in: [use-lilius.ts:24](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L24)
+Defined in: [use-lilius.ts:24](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L24)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **JANUARY**: = 0
 
-Defined in: [use-lilius.ts:23](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L23)
+Defined in: [use-lilius.ts:23](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L23)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **JULY**: = 6
 
-Defined in: [use-lilius.ts:29](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L29)
+Defined in: [use-lilius.ts:29](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L29)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **JUNE**: = 5
 
-Defined in: [use-lilius.ts:28](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L28)
+Defined in: [use-lilius.ts:28](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L28)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 • **MARCH**: = 2
 
-Defined in: [use-lilius.ts:25](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L25)
+Defined in: [use-lilius.ts:25](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L25)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 • **MAY**: = 4
 
-Defined in: [use-lilius.ts:27](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L27)
+Defined in: [use-lilius.ts:27](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L27)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 • **NOVEMBER**: = 10
 
-Defined in: [use-lilius.ts:33](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L33)
+Defined in: [use-lilius.ts:33](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L33)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 • **OCTOBER**: = 9
 
-Defined in: [use-lilius.ts:32](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L32)
+Defined in: [use-lilius.ts:32](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L32)
 
 ___
 
@@ -113,4 +113,4 @@ ___
 
 • **SEPTEMBER**: = 8
 
-Defined in: [use-lilius.ts:31](https://github.com/dannytatom/use-lilius/blob/8e16338/src/use-lilius.ts#L31)
+Defined in: [use-lilius.ts:31](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L31)

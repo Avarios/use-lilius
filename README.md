@@ -6,8 +6,8 @@
   <p>A headless calendar hook for React.</p>
 
   [![npm](https://img.shields.io/npm/v/use-lilius)](https://www.npmjs.com/package/use-lilius)
-  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dannytatom/use-lilius/test)
-  ![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/dannytatom/use-lilius)
+  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/its-danny/use-lilius/test)
+  ![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/its-danny/use-lilius)
 </div>
 
 ## Installation
