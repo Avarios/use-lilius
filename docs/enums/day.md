@@ -20,7 +20,7 @@
 
 • **FRIDAY**: = 5
 
-Defined in: [use-lilius.ts:43](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L43)
+Defined in: [use-lilius.ts:43](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L43)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **MONDAY**: = 1
 
-Defined in: [use-lilius.ts:39](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L39)
+Defined in: [use-lilius.ts:39](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L39)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 • **SATURDAY**: = 6
 
-Defined in: [use-lilius.ts:44](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L44)
+Defined in: [use-lilius.ts:44](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L44)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 • **SUNDAY**: = 0
 
-Defined in: [use-lilius.ts:38](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L38)
+Defined in: [use-lilius.ts:38](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L38)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 • **THURSDAY**: = 4
 
-Defined in: [use-lilius.ts:42](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L42)
+Defined in: [use-lilius.ts:42](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L42)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **TUESDAY**: = 2
 
-Defined in: [use-lilius.ts:40](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L40)
+Defined in: [use-lilius.ts:40](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L40)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 • **WEDNESDAY**: = 3
 
-Defined in: [use-lilius.ts:41](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L41)
+Defined in: [use-lilius.ts:41](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L41)

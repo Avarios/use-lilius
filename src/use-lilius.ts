@@ -44,7 +44,13 @@ export enum Day {
   SATURDAY,
 }
 
-export interface Options {
+export interface Event<EventMetaData = { [key: string]: any }> {
+  start: Date;
+  end: Date;
+  meta?: EventMetaData;
+}
+
+export interface Options<EventMetaData = { [key: string]: any }> {
   /**
    * What day a week starts on within the calendar matrix.
    *
@@ -65,9 +71,16 @@ export interface Options {
    * @default []
    */
   selected?: Date[];
+
+  /**
+   * The initial event(s) selection.
+   *
+   * @default []
+   */
+  events?: Event<EventMetaData>[];
 }
 
-export interface Returns {
+export interface Returns<EventMetaData = { [key: string]: any }> {
   /**
    * Returns a copy of the given date with the time set to 00:00:00:00.
    */
@@ -141,7 +154,7 @@ export interface Returns {
   clearSelected: () => void;
 
   /**
-   * Determine whether or not a date has been selected.
+   * Return whether or not a date has been selected.
    */
   isSelected: (date: Date) => boolean;
 
@@ -171,20 +184,60 @@ export interface Returns {
   deselectRange: (start: Date, end: Date) => void;
 
   /**
+   * The current events.
+   */
+  events: Event<EventMetaData>[];
+
+  /**
+   * Override the current events.
+   */
+  setEvents: React.Dispatch<React.SetStateAction<Event<EventMetaData>[]>>;
+
+  /**
+   * Reset events to [].
+   */
+  clearEvents: () => void;
+
+  /**
+   * Return whether or not a date has events.
+   */
+  hasEvents: (date: Date) => boolean;
+
+  /**
+   * Add one or more events.
+   */
+  addEvent: (event: Event<EventMetaData> | Event<EventMetaData>[]) => void;
+
+  /**
+   * Remove one or more events.
+   */
+  removeEvent: (event: Event<EventMetaData> | Event<EventMetaData>[]) => void;
+
+  /**
+   * Return events for the given date.
+   */
+  eventsFor: (date: Date) => Event<EventMetaData>[];
+
+  /**
    * A matrix of days based on the current viewing date.
    */
   calendar: Date[][];
 }
 
-export const useLilius = ({
+export const useLilius = <EventMetaData = { [key: string]: any }>({
   weekStartsOn = Day.SUNDAY,
   viewing: initialViewing = new Date(),
   selected: initialSelected = [],
-}: Options = {}): Returns => {
+  events: initialEvents = [],
+}: Options<EventMetaData> = {}): Returns<EventMetaData> => {
+  // Helpers
+
   const clearTime = (date: Date) => set(date, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
   const inRange = (date: Date, min: Date, max: Date) =>
     (isEqual(date, min) || isAfter(date, min)) && (isEqual(date, max) || isBefore(date, max));
+
+  // Viewing
 
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
@@ -201,6 +254,8 @@ export const useLilius = ({
   const viewPreviousYear = () => setViewing(subYears(viewing, 1));
 
   const viewNextYear = () => setViewing(addYears(viewing, 1));
+
+  // Selection
 
   const [selected, setSelected] = useState<Date[]>(initialSelected);
 
@@ -245,6 +300,34 @@ export const useLilius = ({
     );
   };
 
+  // Events
+
+  const [events, setEvents] = useState<Event<EventMetaData>[]>(initialEvents);
+
+  const clearEvents = () => setEvents([]);
+
+  const hasEvents = (date: Date) => events.some((e) => inRange(date, clearTime(e.start), clearTime(e.end)));
+
+  const addEvent = (event: Event<EventMetaData> | Event<EventMetaData>[]) =>
+    setEvents(events.concat(Array.isArray(event) ? event : [event]));
+
+  const removeEvent = (event: Event<EventMetaData> | Event<EventMetaData>[]) =>
+    setEvents(
+      Array.isArray(event)
+        ? events.filter(
+            (s) =>
+              !event
+                .map((e) => `${e.start.getTime()}-${e.end.getTime()}`)
+                .includes(`${s.start.getTime()}-${s.end.getTime()}`),
+          )
+        : events.filter((s) => !(isEqual(s.start, event.start) && isEqual(s.end, event.end))),
+    );
+
+  const eventsFor = (date: Date) =>
+    events.filter((e) => isEqual(clearTime(e.start), date) || isEqual(clearTime(e.end), date));
+
+  // Calendar
+
   const [calendar, setCalendar] = useState<Date[][]>([]);
 
   useEffect(() => {
@@ -255,6 +338,8 @@ export const useLilius = ({
 
     setCalendar(matrix);
   }, [viewing]);
+
+  // Return
 
   return {
     clearTime,
@@ -277,6 +362,13 @@ export const useLilius = ({
     toggle,
     selectRange,
     deselectRange,
+    events,
+    setEvents,
+    clearEvents,
+    hasEvents,
+    addEvent,
+    removeEvent,
+    eventsFor,
     calendar,
   };
 };

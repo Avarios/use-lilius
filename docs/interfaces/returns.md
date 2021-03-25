@@ -1,21 +1,34 @@
 [use-lilius](../README.md) / Returns
 
-# Interface: Returns
+# Interface: Returns<EventMetaData\>
+
+## Type parameters
+
+Name | Default |
+:------ | :------ |
+`EventMetaData` | { [key: string]: *any*;  } |
 
 ## Table of contents
 
 ### Properties
 
+- [addEvent](returns.md#addevent)
 - [calendar](returns.md#calendar)
+- [clearEvents](returns.md#clearevents)
 - [clearSelected](returns.md#clearselected)
 - [clearTime](returns.md#cleartime)
 - [deselect](returns.md#deselect)
 - [deselectRange](returns.md#deselectrange)
+- [events](returns.md#events)
+- [eventsFor](returns.md#eventsfor)
+- [hasEvents](returns.md#hasevents)
 - [inRange](returns.md#inrange)
 - [isSelected](returns.md#isselected)
+- [removeEvent](returns.md#removeevent)
 - [select](returns.md#select)
 - [selectRange](returns.md#selectrange)
 - [selected](returns.md#selected)
+- [setEvents](returns.md#setevents)
 - [setSelected](returns.md#setselected)
 - [setViewing](returns.md#setviewing)
 - [toggle](returns.md#toggle)
@@ -30,13 +43,55 @@
 
 ## Properties
 
+### addEvent
+
+• **addEvent**: (`event`: [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[]) => *void*
+
+Add one or more events.
+
+#### Type declaration:
+
+▸ (`event`: [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`event` | [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[] |
+
+**Returns:** *void*
+
+Defined in: [use-lilius.ts:209](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L209)
+
+Defined in: [use-lilius.ts:209](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L209)
+
+___
+
 ### calendar
 
 • **calendar**: Date[][]
 
 A matrix of days based on the current viewing date.
 
-Defined in: [use-lilius.ts:176](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L176)
+Defined in: [use-lilius.ts:224](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L224)
+
+___
+
+### clearEvents
+
+• **clearEvents**: () => *void*
+
+Reset events to [].
+
+#### Type declaration:
+
+▸ (): *void*
+
+**Returns:** *void*
+
+Defined in: [use-lilius.ts:199](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L199)
+
+Defined in: [use-lilius.ts:199](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L199)
 
 ___
 
@@ -52,9 +107,9 @@ Reset the selected dates to [].
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:141](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L141)
+Defined in: [use-lilius.ts:154](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L154)
 
-Defined in: [use-lilius.ts:141](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L141)
+Defined in: [use-lilius.ts:154](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L154)
 
 ___
 
@@ -76,9 +131,9 @@ Name | Type |
 
 **Returns:** Date
 
-Defined in: [use-lilius.ts:74](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L74)
+Defined in: [use-lilius.ts:87](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L87)
 
-Defined in: [use-lilius.ts:74](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L74)
+Defined in: [use-lilius.ts:87](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L87)
 
 ___
 
@@ -100,9 +155,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:156](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L156)
+Defined in: [use-lilius.ts:169](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L169)
 
-Defined in: [use-lilius.ts:156](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L156)
+Defined in: [use-lilius.ts:169](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L169)
 
 ___
 
@@ -125,9 +180,67 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:171](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L171)
+Defined in: [use-lilius.ts:184](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L184)
 
-Defined in: [use-lilius.ts:171](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L171)
+Defined in: [use-lilius.ts:184](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L184)
+
+___
+
+### events
+
+• **events**: [*Event*](event.md)<EventMetaData\>[]
+
+The current events.
+
+Defined in: [use-lilius.ts:189](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L189)
+
+___
+
+### eventsFor
+
+• **eventsFor**: (`date`: Date) => [*Event*](event.md)<EventMetaData\>[]
+
+Return events for the given date.
+
+#### Type declaration:
+
+▸ (`date`: Date): [*Event*](event.md)<EventMetaData\>[]
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`date` | Date |
+
+**Returns:** [*Event*](event.md)<EventMetaData\>[]
+
+Defined in: [use-lilius.ts:219](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L219)
+
+Defined in: [use-lilius.ts:219](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L219)
+
+___
+
+### hasEvents
+
+• **hasEvents**: (`date`: Date) => *boolean*
+
+Return whether or not a date has events.
+
+#### Type declaration:
+
+▸ (`date`: Date): *boolean*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`date` | Date |
+
+**Returns:** *boolean*
+
+Defined in: [use-lilius.ts:204](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L204)
+
+Defined in: [use-lilius.ts:204](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L204)
 
 ___
 
@@ -151,9 +264,9 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [use-lilius.ts:79](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L79)
+Defined in: [use-lilius.ts:92](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L92)
 
-Defined in: [use-lilius.ts:79](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L79)
+Defined in: [use-lilius.ts:92](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L92)
 
 ___
 
@@ -161,7 +274,7 @@ ___
 
 • **isSelected**: (`date`: Date) => *boolean*
 
-Determine whether or not a date has been selected.
+Return whether or not a date has been selected.
 
 #### Type declaration:
 
@@ -175,9 +288,33 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [use-lilius.ts:146](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L146)
+Defined in: [use-lilius.ts:159](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L159)
 
-Defined in: [use-lilius.ts:146](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L146)
+Defined in: [use-lilius.ts:159](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L159)
+
+___
+
+### removeEvent
+
+• **removeEvent**: (`event`: [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[]) => *void*
+
+Remove one or more events.
+
+#### Type declaration:
+
+▸ (`event`: [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`event` | [*Event*](event.md)<EventMetaData\> \| [*Event*](event.md)<EventMetaData\>[] |
+
+**Returns:** *void*
+
+Defined in: [use-lilius.ts:214](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L214)
+
+Defined in: [use-lilius.ts:214](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L214)
 
 ___
 
@@ -200,9 +337,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:151](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L151)
+Defined in: [use-lilius.ts:164](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L164)
 
-Defined in: [use-lilius.ts:151](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L151)
+Defined in: [use-lilius.ts:164](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L164)
 
 ___
 
@@ -226,9 +363,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:166](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L166)
+Defined in: [use-lilius.ts:179](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L179)
 
-Defined in: [use-lilius.ts:166](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L166)
+Defined in: [use-lilius.ts:179](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L179)
 
 ___
 
@@ -238,7 +375,17 @@ ___
 
 The dates currently selected.
 
-Defined in: [use-lilius.ts:131](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L131)
+Defined in: [use-lilius.ts:144](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L144)
+
+___
+
+### setEvents
+
+• **setEvents**: *Dispatch*<SetStateAction<[*Event*](event.md)<EventMetaData\>[]\>\>
+
+Override the current events.
+
+Defined in: [use-lilius.ts:194](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L194)
 
 ___
 
@@ -248,7 +395,7 @@ ___
 
 Override the currently selected dates.
 
-Defined in: [use-lilius.ts:136](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L136)
+Defined in: [use-lilius.ts:149](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L149)
 
 ___
 
@@ -259,7 +406,7 @@ ___
 Set the date represented in the calendar matrix. Note that
 the month and year are the only parts used.
 
-Defined in: [use-lilius.ts:91](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L91)
+Defined in: [use-lilius.ts:104](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L104)
 
 ___
 
@@ -282,9 +429,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:161](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L161)
+Defined in: [use-lilius.ts:174](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L174)
 
-Defined in: [use-lilius.ts:161](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L161)
+Defined in: [use-lilius.ts:174](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L174)
 
 ___
 
@@ -306,9 +453,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:101](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L101)
+Defined in: [use-lilius.ts:114](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L114)
 
-Defined in: [use-lilius.ts:101](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L101)
+Defined in: [use-lilius.ts:114](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L114)
 
 ___
 
@@ -324,9 +471,9 @@ Set the viewing date to the month after the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:111](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L111)
+Defined in: [use-lilius.ts:124](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L124)
 
-Defined in: [use-lilius.ts:111](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L111)
+Defined in: [use-lilius.ts:124](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L124)
 
 ___
 
@@ -342,9 +489,9 @@ Set the viewing date to the year after the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:126](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L126)
+Defined in: [use-lilius.ts:139](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L139)
 
-Defined in: [use-lilius.ts:126](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L126)
+Defined in: [use-lilius.ts:139](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L139)
 
 ___
 
@@ -360,9 +507,9 @@ Set the viewing date to the month before the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:106](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L106)
+Defined in: [use-lilius.ts:119](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L119)
 
-Defined in: [use-lilius.ts:106](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L106)
+Defined in: [use-lilius.ts:119](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L119)
 
 ___
 
@@ -378,9 +525,9 @@ Set the viewing date to the year before the current.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:121](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L121)
+Defined in: [use-lilius.ts:134](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L134)
 
-Defined in: [use-lilius.ts:121](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L121)
+Defined in: [use-lilius.ts:134](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L134)
 
 ___
 
@@ -396,9 +543,9 @@ Set the viewing date to today.
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:96](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L96)
+Defined in: [use-lilius.ts:109](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L109)
 
-Defined in: [use-lilius.ts:96](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L96)
+Defined in: [use-lilius.ts:109](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L109)
 
 ___
 
@@ -420,9 +567,9 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [use-lilius.ts:116](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L116)
+Defined in: [use-lilius.ts:129](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L129)
 
-Defined in: [use-lilius.ts:116](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L116)
+Defined in: [use-lilius.ts:129](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L129)
 
 ___
 
@@ -433,4 +580,4 @@ ___
 The date represented in the calendar matrix. Note that
 the month and year are the only parts used.
 
-Defined in: [use-lilius.ts:85](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L85)
+Defined in: [use-lilius.ts:98](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L98)

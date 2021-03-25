@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react-hooks";
-import { addYears, getYear, set, startOfToday, subYears } from "date-fns";
+import { addHours, addYears, getYear, set, startOfToday, subYears } from "date-fns";
 
-import { Month, useLilius } from "./use-lilius";
+import { Event, Month, useLilius } from "./use-lilius";
 
 const getDate = ({
   year = 1999,
@@ -57,17 +57,6 @@ describe("viewing", () => {
 
       const { result } = renderHook(() => useLilius({ viewing: date }));
 
-      expect(result.current.viewing).toStrictEqual(date);
-    });
-  });
-
-  describe("setViewing", () => {
-    it("sets the date represented in the calendar matrix", () => {
-      const { result } = renderHook(() => useLilius());
-
-      const date = getDate();
-
-      act(() => result.current.setViewing(date));
       expect(result.current.viewing).toStrictEqual(date);
     });
   });
@@ -305,6 +294,110 @@ describe("selected", () => {
       expect(result.current.isSelected(set(date, { date: 1 }))).toBe(false);
       expect(result.current.isSelected(set(date, { date: 2 }))).toBe(false);
       expect(result.current.isSelected(set(date, { date: 3 }))).toBe(false);
+    });
+  });
+});
+
+describe("events", () => {
+  describe("events", () => {
+    it("returns the date current events", () => {
+      const event: Event = { start: new Date(), end: addHours(new Date(), 1) };
+
+      const { result } = renderHook(() => useLilius({ events: [event] }));
+
+      expect(result.current.events).toStrictEqual([event]);
+    });
+  });
+
+  describe("clearEvents", () => {
+    it("resets events to []", () => {
+      const date = getDate();
+      const event: Event = { start: date, end: addHours(date, 1) };
+
+      const { result } = renderHook(() => useLilius());
+
+      act(() => result.current.addEvent(event));
+      expect(result.current.events.length).toBe(1);
+
+      act(() => result.current.removeEvent(event));
+      expect(result.current.events.length).toBe(0);
+    });
+  });
+
+  describe("hasEvents", () => {
+    it("returns whether or not a date has events", () => {
+      const date = getDate();
+      const event: Event = { start: date, end: addHours(date, 1) };
+
+      const { result } = renderHook(() => useLilius({ events: [event] }));
+
+      expect(result.current.hasEvents(date)).toBe(true);
+    });
+  });
+
+  describe("addEvent", () => {
+    it("adds an event", () => {
+      const { result } = renderHook(() => useLilius());
+
+      const date = getDate();
+      const event: Event = { start: date, end: addHours(date, 1) };
+
+      act(() => result.current.addEvent(event));
+      expect(result.current.hasEvents(date)).toBe(true);
+    });
+
+    it("adds multiple events", () => {
+      const { result } = renderHook(() => useLilius());
+
+      const dateOne = getDate({ date: 1 });
+      const eventOne: Event = { start: dateOne, end: addHours(dateOne, 1) };
+      const dateTwo = getDate({ date: 1 });
+      const eventTwo: Event = { start: dateTwo, end: addHours(dateTwo, 1) };
+
+      act(() => result.current.addEvent([eventOne, eventTwo]));
+      expect(result.current.hasEvents(dateOne)).toBe(true);
+      expect(result.current.hasEvents(dateTwo)).toBe(true);
+    });
+  });
+
+  describe("removeEvent", () => {
+    it("removes an event", () => {
+      const { result } = renderHook(() => useLilius());
+
+      const date = getDate();
+      const event: Event = { start: date, end: addHours(date, 1) };
+
+      act(() => result.current.addEvent(event));
+      act(() => result.current.removeEvent(event));
+      expect(result.current.hasEvents(date)).toBe(false);
+    });
+
+    it("removes multiple events", () => {
+      const { result } = renderHook(() => useLilius());
+
+      const dateOne = getDate({ date: 1 });
+      const eventOne: Event = { start: dateOne, end: addHours(dateOne, 1) };
+      const dateTwo = getDate({ date: 1 });
+      const eventTwo: Event = { start: dateTwo, end: addHours(dateTwo, 1) };
+
+      act(() => result.current.addEvent([eventOne, eventTwo]));
+      act(() => result.current.removeEvent([eventOne, eventTwo]));
+      expect(result.current.hasEvents(dateOne)).toBe(false);
+      expect(result.current.hasEvents(dateTwo)).toBe(false);
+    });
+  });
+
+  describe("eventsFor", () => {
+    it("returns events for the given date", () => {
+      const { result } = renderHook(() => useLilius());
+
+      const dateOne = getDate({ date: 1 });
+      const eventOne: Event = { start: dateOne, end: addHours(dateOne, 1) };
+      const dateTwo = getDate({ date: 2 });
+      const eventTwo: Event = { start: dateTwo, end: addHours(dateTwo, 1) };
+
+      act(() => result.current.addEvent([eventOne, eventTwo]));
+      expect(result.current.eventsFor(dateOne)).toStrictEqual([eventOne]);
     });
   });
 });

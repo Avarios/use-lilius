@@ -11,6 +11,7 @@ use-lilius
 
 ### Interfaces
 
+- [Event](interfaces/event.md)
 - [Options](interfaces/options.md)
 - [Returns](interfaces/returns.md)
 
@@ -22,14 +23,20 @@ use-lilius
 
 ### useLilius
 
-▸ `Const`**useLilius**(`__namedParameters?`: [*Options*](interfaces/options.md)): [*Returns*](interfaces/returns.md)
+▸ `Const`**useLilius**<EventMetaData\>(`__namedParameters?`: [*Options*](interfaces/options.md)<EventMetaData\>): [*Returns*](interfaces/returns.md)<EventMetaData\>
+
+#### Type parameters:
+
+Name | Default |
+:------ | :------ |
+`EventMetaData` | { [key: string]: *any*;  } |
 
 #### Parameters:
 
 Name | Type |
 :------ | :------ |
-`__namedParameters` | [*Options*](interfaces/options.md) |
+`__namedParameters` | [*Options*](interfaces/options.md)<EventMetaData\> |
 
-**Returns:** [*Returns*](interfaces/returns.md)
+**Returns:** [*Returns*](interfaces/returns.md)<EventMetaData\>
 
-Defined in: [use-lilius.ts:179](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L179)
+Defined in: [use-lilius.ts:227](https://github.com/dannytatom/use-lilius/blob/4427247/src/use-lilius.ts#L227)
