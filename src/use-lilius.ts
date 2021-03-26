@@ -248,10 +248,13 @@ export const useLilius = ({
   const [calendar, setCalendar] = useState<Date[][]>([]);
 
   useEffect(() => {
-    const matrix = eachWeekOfInterval(
-      { start: startOfMonth(viewing), end: endOfMonth(viewing) },
-      { weekStartsOn },
-    ).map((week) => eachDayOfInterval({ start: startOfWeek(week), end: endOfWeek(week) }));
+    const matrix = eachWeekOfInterval({ start: startOfMonth(viewing), end: endOfMonth(viewing) }, { weekStartsOn }).map(
+      (week) =>
+        eachDayOfInterval({
+          start: startOfWeek(week, { weekStartsOn }),
+          end: endOfWeek(week, { weekStartsOn }),
+        }),
+    );
 
     setCalendar(matrix);
   }, [viewing]);
