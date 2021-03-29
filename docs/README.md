@@ -32,4 +32,4 @@ Name | Type |
 
 **Returns:** [*Returns*](interfaces/returns.md)
 
-Defined in: [use-lilius.ts:179](https://github.com/its-danny/use-lilius/blob/8e16338/src/use-lilius.ts#L179)
+Defined in: [use-lilius.ts:179](https://github.com/its-danny/use-lilius/blob/d2a05ad/src/use-lilius.ts#L179)
