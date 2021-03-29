@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/its-danny/use-lilius/compare/v1.1.1...v1.1.2) (2021-03-29)
+
+
+### Bug Fixes
+
+* fix-option-weekStartsOn ([58c8342](https://github.com/its-danny/use-lilius/commit/58c8342978f4b49bbca3394cae24ea0d18742536))
+
 ### [1.1.1](https://github.com/its-danny/use-lilius/compare/v1.1.0...v1.1.1) (2021-03-26)
 
 ## [1.1.0](https://github.com/its-danny/use-lilius/compare/v1.0.0...v1.1.0) (2021-03-21)
