@@ -1082,14 +1082,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
-  version "7.13.9"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.9.tgz#97dbe2116e2630c489f22e0656decd60aaa1fcee"
-  integrity sha512-aY2kU+xgJ3dJ1eU6FMB9EH8dIe8dmusF1xEku52joLvw6eAFN0AI+WxCLDnpev2LEejWBAy2sBvBOBAjI3zmvA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.13.10":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
@@ -5377,9 +5370,9 @@ chownr@^2.0.0:
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
 chromatic@^5.6.3:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.7.0.tgz#2e3cf1edb32da2c65547ca7809a516ce8aea5039"
-  integrity sha512-vcHNFTzjJGwlIDLzrR9lhIaCsxgUtyBQPPxn/+cFu9fLXox28Zgsfv0ccK5/gRc4fM5aF/ePMkdpgzVzEuyfuA==
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.7.1.tgz#386cee9d57b530eb14151e6f57f0729f79c512fb"
+  integrity sha512-At5qZotlA5E7MQncIMbyyniZxAO4XRIHRmz/4V2a9OFtyE8OvpNBOnfaRiLGoEZiZy7eWz/PmU5yTFNc++ISVQ==
   dependencies:
     "@actions/core" "^1.2.4"
     "@actions/github" "^4.0.0"
