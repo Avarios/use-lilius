@@ -25,6 +25,7 @@ import {
   isToday,
   isValid,
   lastDayOfMonth,
+  nextMonday,
   parse,
   startOfMonth,
 } from "date-fns";
@@ -165,6 +166,14 @@ export const SingleSelect: React.FC = () => {
                 sx={styles.shortcutButton}
               >
                 Tomorrow
+              </Button>
+
+              <Button
+                onClick={() => select(nextMonday(clearTime(new Date())), true)}
+                size="sm"
+                sx={styles.shortcutButton}
+              >
+                Next Monday
               </Button>
             </ButtonGroup>
 
