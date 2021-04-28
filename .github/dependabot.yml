@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@storybook/react"
+    versions:
+    - 6.2.2
+  - dependency-name: "@rollup/plugin-node-resolve"
+    versions:
+    - 11.2.1
