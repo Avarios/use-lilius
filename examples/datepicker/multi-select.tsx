@@ -23,17 +23,8 @@ import { IoCalendarClearSharp, IoChevronBackSharp, IoChevronForwardSharp } from 
 import { useLilius } from "../../src/use-lilius";
 
 export const MultiSelect: React.FC = () => {
-  const {
-    calendar,
-    inRange,
-    isSelected,
-    selected,
-    toggle,
-    viewing,
-    viewNextMonth,
-    viewPreviousMonth,
-    viewToday,
-  } = useLilius();
+  const { calendar, inRange, isSelected, selected, toggle, viewing, viewNextMonth, viewPreviousMonth, viewToday } =
+    useLilius();
 
   const styles = useMultiStyleConfig("Datepicker", {});
   const listRef = useRef<HTMLDivElement>(null);
