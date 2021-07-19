@@ -9,6 +9,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  Stack,
   Text,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
@@ -43,7 +44,7 @@ export const RangeSelect: React.FC = () => {
     viewNextMonth,
     viewPreviousMonth,
     viewToday,
-  } = useLilius();
+  } = useLilius({ numberOfMonths: 2 });
 
   const styles = useMultiStyleConfig("Datepicker", {});
 
@@ -94,7 +95,7 @@ export const RangeSelect: React.FC = () => {
           </Box>
         </PopoverTrigger>
 
-        <PopoverContent sx={styles.popContent}>
+        <PopoverContent sx={styles.popContent} w="600px">
           <PopoverBody sx={styles.popBody}>
             <ButtonGroup sx={styles.shortcutButtonGroup}>
               <Button
@@ -127,7 +128,11 @@ export const RangeSelect: React.FC = () => {
                 sx={styles.navigationButton}
               />
 
-              <Text sx={styles.navigationLabel}>{format(viewing, "MMMM yyyy")}</Text>
+              {calendar.map((month) => (
+                <Text key={month.firstDay.toDateString()} sx={styles.navigationLabel}>
+                  {format(month.firstDay, "MMMM yyyy")}
+                </Text>
+              ))}
 
               <IconButton
                 aria-label="Next Month"
@@ -138,55 +143,68 @@ export const RangeSelect: React.FC = () => {
               />
             </Box>
 
-            <Box sx={styles.calendarContainer}>
-              <Box sx={styles.dayLabelContainer}>
-                {calendar.length > 0 &&
-                  calendar[0].map((day) => (
-                    <Box key={`${day}`} sx={styles.dayLabel}>
-                      {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
+            <Stack direction="row">
+              {calendar.map((month) => (
+                <Box w="50%" key={month.firstDay.toDateString()}>
+                  <Box sx={styles.calendarContainer}>
+                    <Box sx={styles.dayLabelContainer}>
+                      {month.weeks.length > 0 &&
+                        month.weeks[0].map((day) => (
+                          <Box key={`${day}`} sx={styles.dayLabel}>
+                            {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
+                          </Box>
+                        ))}
                     </Box>
-                  ))}
-              </Box>
 
-              {calendar.map((week) => (
-                <Box key={`week-${week[0]}`} sx={styles.calendarMatrixContainer}>
-                  {week.map((day) => (
-                    <Box
-                      data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
-                      data-selected={isSelected(day)}
-                      data-today={isToday(day)}
-                      data-dont-round={
-                        isSelected(day) && !isEqual(day, selected[0]) && !isEqual(day, selected[selected.length - 1])
-                      }
-                      data-dont-round-left={isSelected(day) && !isEqual(day, selected[0])}
-                      data-dont-round-right={isSelected(day) && !isEqual(day, selected[selected.length - 1])}
-                      key={`${day}`}
-                      onClick={() => {
-                        const sorted = selected.sort((a, b) => compareAsc(a, b));
+                    {month.weeks.map((week) => (
+                      <Box
+                        key={`month-${month.firstDay.toDateString()}-week-${week[0]}`}
+                        sx={styles.calendarMatrixContainer}
+                      >
+                        {week.map((day) => (
+                          <Box
+                            data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
+                            data-selected={isSelected(day)}
+                            data-today={isToday(day)}
+                            data-dont-round={
+                              isSelected(day) &&
+                              !isEqual(day, selected[0]) &&
+                              !isEqual(day, selected[selected.length - 1])
+                            }
+                            data-dont-round-left={isSelected(day) && !isEqual(day, selected[0])}
+                            data-dont-round-right={isSelected(day) && !isEqual(day, selected[selected.length - 1])}
+                            key={`${day}`}
+                            onClick={() => {
+                              const sorted = selected.sort((a, b) => compareAsc(a, b));
 
-                        if (sorted.length === 0) {
-                          select(day);
-                        } else if (isSelected(day)) {
-                          if (selected.length === 1) {
-                            deselect(day);
-                          } else {
-                            const range = eachDayOfInterval({ start: sorted[0], end: day });
-                            const diff = sorted.filter((d) => range.map((a) => a.getTime()).includes(d.getTime()));
+                              if (sorted.length === 0) {
+                                select(day);
+                              } else if (isSelected(day)) {
+                                if (selected.length === 1) {
+                                  deselect(day);
+                                } else {
+                                  const range = eachDayOfInterval({ start: sorted[0], end: day });
+                                  const diff = sorted.filter((d) =>
+                                    range.map((a) => a.getTime()).includes(d.getTime()),
+                                  );
 
-                            selectRange(diff[0], diff[diff.length - 1], true);
-                          }
-                        } else {
-                          selectRange(sorted[0], day, true);
-                        }
-                      }}
-                      sx={styles.calendarMatrixDay}
-                    >
-                      <Text>{format(day, "dd")}</Text>
-                    </Box>
-                  ))}
+                                  selectRange(diff[0], diff[diff.length - 1], true);
+                                }
+                              } else {
+                                selectRange(sorted[0], day, true);
+                              }
+                            }}
+                            sx={styles.calendarMatrixDay}
+                          >
+                            <Text>{format(day, "dd")}</Text>
+                          </Box>
+                        ))}
+                      </Box>
+                    ))}
+                  </Box>
                 </Box>
               ))}
-            </Box>
+            </Stack>
 
             <Divider sx={styles.divider} />
 

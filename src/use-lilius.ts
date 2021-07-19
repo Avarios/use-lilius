@@ -2,6 +2,7 @@ import {
   addMonths,
   addYears,
   eachDayOfInterval,
+  eachMonthOfInterval,
   eachWeekOfInterval,
   endOfMonth,
   endOfWeek,
@@ -65,6 +66,18 @@ export interface Options {
    * @default []
    */
   selected?: Date[];
+
+  /**
+   * The number of month in calendar.
+   *
+   * @default 1
+   */
+  numberOfMonths?: number;
+}
+
+export interface CalendarMonth {
+  firstDay: Date;
+  weeks: Date[][];
 }
 
 export interface Returns {
@@ -173,13 +186,14 @@ export interface Returns {
   /**
    * A matrix of days based on the current viewing date.
    */
-  calendar: Date[][];
+  calendar: CalendarMonth[];
 }
 
 export const useLilius = ({
   weekStartsOn = Day.SUNDAY,
   viewing: initialViewing = new Date(),
   selected: initialSelected = [],
+  numberOfMonths = 1,
 }: Options = {}): Returns => {
   const clearTime = (date: Date) => set(date, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
@@ -245,16 +259,21 @@ export const useLilius = ({
     );
   };
 
-  const [calendar, setCalendar] = useState<Date[][]>([]);
+  const [calendar, setCalendar] = useState<CalendarMonth[]>([]);
 
   useEffect(() => {
-    const matrix = eachWeekOfInterval({ start: startOfMonth(viewing), end: endOfMonth(viewing) }, { weekStartsOn }).map(
-      (week) =>
+    const matrix = eachMonthOfInterval({
+      start: startOfMonth(viewing),
+      end: endOfMonth(addMonths(viewing, numberOfMonths - 1)),
+    }).map((month) => ({
+      firstDay: month,
+      weeks: eachWeekOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }, { weekStartsOn }).map((week) =>
         eachDayOfInterval({
           start: startOfWeek(week, { weekStartsOn }),
           end: endOfWeek(week, { weekStartsOn }),
         }),
-    );
+      ),
+    }));
 
     setCalendar(matrix);
   }, [viewing]);
