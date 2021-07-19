@@ -313,8 +313,18 @@ describe("calendar", () => {
   it("returns a matrix of days based on the current viewing date", () => {
     const { result } = renderHook(() => useLilius({ viewing: new Date(1582, Month.OCTOBER, 1) }));
 
-    expect(result.current.calendar![0][0]).toStrictEqual(new Date(1582, Month.SEPTEMBER, 26));
-    expect(result.current.calendar![0][5]).toStrictEqual(new Date(1582, Month.OCTOBER, 1));
-    expect(result.current.calendar![5][6]).toStrictEqual(new Date(1582, Month.NOVEMBER, 6));
+    expect(result.current.calendar![0].firstDay).toStrictEqual(new Date(1582, Month.OCTOBER, 1));
+    expect(result.current.calendar![0].weeks[0][0]).toStrictEqual(new Date(1582, Month.SEPTEMBER, 26));
+    expect(result.current.calendar![0].weeks[0][5]).toStrictEqual(new Date(1582, Month.OCTOBER, 1));
+    expect(result.current.calendar![0].weeks[5][6]).toStrictEqual(new Date(1582, Month.NOVEMBER, 6));
+  });
+});
+
+describe("calendar two months", () => {
+  it("returns a matrix of days based on the current viewing date for two months", () => {
+    const { result } = renderHook(() => useLilius({ viewing: new Date(1582, Month.OCTOBER, 1), numberOfMonths: 2 }));
+
+    expect(result.current.calendar![0].firstDay).toStrictEqual(new Date(1582, Month.OCTOBER, 1));
+    expect(result.current.calendar![1].firstDay).toStrictEqual(new Date(1582, Month.NOVEMBER, 1));
   });
 });
