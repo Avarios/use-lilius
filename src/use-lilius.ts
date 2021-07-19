@@ -2,6 +2,7 @@ import {
   addMonths,
   addYears,
   eachDayOfInterval,
+  eachMonthOfInterval,
   eachWeekOfInterval,
   endOfMonth,
   endOfWeek,
@@ -65,6 +66,18 @@ export interface Options {
    * @default []
    */
   selected?: Date[];
+
+  /**
+   * The number of month in calendar.
+   *
+   * @default 1
+   */
+  numberOfMonths?: number;
+}
+
+export interface CalendarMonth {
+  firstDay: Date;
+  weeks: Date[][];
 }
 
 export interface Returns {
@@ -173,7 +186,7 @@ export interface Returns {
   /**
    * A matrix of days based on the current viewing date.
    */
-  calendar: Date[][];
+  calendar: CalendarMonth[];
 }
 
 const inRange = (date: Date, min: Date, max: Date) =>
@@ -185,6 +198,7 @@ export const useLilius = ({
   weekStartsOn = Day.SUNDAY,
   viewing: initialViewing = new Date(),
   selected: initialSelected = [],
+  numberOfMonths = 1,
 }: Options = {}): Returns => {
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
@@ -260,6 +274,7 @@ export const useLilius = ({
       ),
     [viewing, weekStartsOn],
   );
+
 
   return {
     clearTime,
