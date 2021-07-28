@@ -17,7 +17,7 @@ import {
   subMonths,
   subYears,
 } from "date-fns";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
 export enum Month {
   JANUARY,
@@ -245,19 +245,16 @@ export const useLilius = ({
     );
   };
 
-  const [calendar, setCalendar] = useState<Date[][]>([]);
-
-  useEffect(() => {
-    const matrix = eachWeekOfInterval({ start: startOfMonth(viewing), end: endOfMonth(viewing) }, { weekStartsOn }).map(
-      (week) =>
+  const calendar = useMemo<Date[][]>(
+    () =>
+      eachWeekOfInterval({ start: startOfMonth(viewing), end: endOfMonth(viewing) }, { weekStartsOn }).map((week) =>
         eachDayOfInterval({
           start: startOfWeek(week, { weekStartsOn }),
           end: endOfWeek(week, { weekStartsOn }),
         }),
-    );
-
-    setCalendar(matrix);
-  }, [viewing]);
+      ),
+    [viewing],
+  );
 
   return {
     clearTime,
