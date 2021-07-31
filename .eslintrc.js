@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["airbnb-typescript", "plugin:prettier/recommended"],
+  extends: ["airbnb-typescript", "plugin:prettier/recommended", "plugin:react-hooks/recommended"],
 
   plugins: ["simple-import-sort", "prettier", "jest"],
 
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   parserOptions: {
-    project: './tsconfig.eslint.json',
+    project: "./tsconfig.eslint.json",
   },
 
   env: {
