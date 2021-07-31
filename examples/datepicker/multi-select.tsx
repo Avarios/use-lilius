@@ -77,6 +77,7 @@ export const MultiSelect: React.FC = () => {
 
       setVisibleTagCount(newVisibleTagCount);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected, previouslySelected]);
 
   return (
