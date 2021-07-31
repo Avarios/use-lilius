@@ -14,6 +14,8 @@ module.exports = {
 
     "prettier/prettier": "error",
 
+    "react-hooks/exhaustive-deps": 2,
+
     "simple-import-sort/imports": [
       "error",
       {
