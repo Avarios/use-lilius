@@ -6,13 +6,13 @@ use-lilius
 
 ### Enumerations
 
-- [Day](enums/day.md)
-- [Month](enums/month.md)
+- [Day](enums/Day.md)
+- [Month](enums/Month.md)
 
 ### Interfaces
 
-- [Options](interfaces/options.md)
-- [Returns](interfaces/returns.md)
+- [Options](interfaces/Options.md)
+- [Returns](interfaces/Returns.md)
 
 ### Functions
 
@@ -22,14 +22,18 @@ use-lilius
 
 ### useLilius
 
-▸ `Const`**useLilius**(`__namedParameters?`: [*Options*](interfaces/options.md)): [*Returns*](interfaces/returns.md)
+▸ `Const` **useLilius**(`__namedParameters?`): [`Returns`](interfaces/Returns.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`__namedParameters` | [*Options*](interfaces/options.md) |
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | [`Options`](interfaces/Options.md) |
 
-**Returns:** [*Returns*](interfaces/returns.md)
+#### Returns
 
-Defined in: [use-lilius.ts:179](https://github.com/its-danny/use-lilius/blob/d2a05ad/src/use-lilius.ts#L179)
+[`Returns`](interfaces/Returns.md)
+
+#### Defined in
+
+[use-lilius.ts:184](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L184)
