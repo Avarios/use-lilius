@@ -123,8 +123,7 @@ export const SingleSelect: React.FC = () => {
   useEffect(() => {
     setInputValue(selected.length > 0 ? format(selected[0], "MM/dd/yyyy") : "");
     setViewing(selected.length > 0 ? selected[0] : new Date());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected]);
+  }, [selected, setViewing]);
 
   return (
     <Box width={300}>
