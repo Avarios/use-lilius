@@ -75,11 +75,6 @@ export interface Options {
   numberOfMonths?: number;
 }
 
-export interface CalendarMonth {
-  firstDay: Date;
-  weeks: Date[][];
-}
-
 export interface Returns {
   /**
    * Returns a copy of the given date with the time set to 00:00:00:00.
@@ -186,7 +181,7 @@ export interface Returns {
   /**
    * A matrix of days based on the current viewing date.
    */
-  calendar: CalendarMonth[];
+  calendar: Date[][][];
 }
 
 const inRange = (date: Date, min: Date, max: Date) =>
@@ -264,18 +259,27 @@ export const useLilius = ({
     );
   }, []);
 
-  const calendar = useMemo<Date[][]>(
+  const calendar = useMemo<Date[][][]>(
     () =>
-      eachWeekOfInterval({ start: startOfMonth(viewing), end: endOfMonth(viewing) }, { weekStartsOn }).map((week) =>
-        eachDayOfInterval({
-          start: startOfWeek(week, { weekStartsOn }),
-          end: endOfWeek(week, { weekStartsOn }),
-        }),
+      eachMonthOfInterval({
+        start: startOfMonth(viewing),
+        end: endOfMonth(addMonths(viewing, numberOfMonths - 1)),
+      }).map((month) =>
+        eachWeekOfInterval(
+          {
+            start: startOfMonth(month),
+            end: endOfMonth(month),
+          },
+          { weekStartsOn },
+        ).map((week) =>
+          eachDayOfInterval({
+            start: startOfWeek(week, { weekStartsOn }),
+            end: endOfWeek(week, { weekStartsOn }),
+          }),
+        ),
       ),
-    [viewing, weekStartsOn],
+    [viewing, weekStartsOn, numberOfMonths],
   );
-
-
   return {
     clearTime,
     inRange,
