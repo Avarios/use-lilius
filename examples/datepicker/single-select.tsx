@@ -201,31 +201,29 @@ export const SingleSelect: React.FC = () => {
 
             <Box sx={styles.calendarContainer}>
               <Box sx={styles.dayLabelContainer}>
-                {calendar.length > 0 &&
-                  calendar[0][0].map((day) => (
-                    <Box key={`${day}`} sx={styles.dayLabel}>
-                      {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
-                    </Box>
-                  ))}
-              </Box>
-
-              {calendar.length > 0 &&
-                calendar[0].map((week) => (
-                  <Box key={`week-${week[0]}`} sx={styles.calendarMatrixContainer}>
-                    {week.map((day) => (
-                      <Box
-                        data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
-                        data-selected={isSelected(day)}
-                        data-today={isToday(day)}
-                        key={`${day}`}
-                        onClick={() => toggle(day, true)}
-                        sx={styles.calendarMatrixDay}
-                      >
-                        <Text>{format(day, "dd")}</Text>
-                      </Box>
-                    ))}
+                {calendar[0][0].map((day) => (
+                  <Box key={`${day}`} sx={styles.dayLabel}>
+                    {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
                   </Box>
                 ))}
+              </Box>
+
+              {calendar[0].map((week) => (
+                <Box key={`week-${week[0]}`} sx={styles.calendarMatrixContainer}>
+                  {week.map((day) => (
+                    <Box
+                      data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
+                      data-selected={isSelected(day)}
+                      data-today={isToday(day)}
+                      key={`${day}`}
+                      onClick={() => toggle(day, true)}
+                      sx={styles.calendarMatrixDay}
+                    >
+                      <Text>{format(day, "dd")}</Text>
+                    </Box>
+                  ))}
+                </Box>
+              ))}
             </Box>
 
             <Divider sx={styles.divider} />
