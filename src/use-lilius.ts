@@ -68,7 +68,7 @@ export interface Options {
   selected?: Date[];
 
   /**
-   * The number of month in calendar.
+   * The number of months in the calendar.
    *
    * @default 1
    */

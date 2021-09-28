@@ -49,6 +49,7 @@ export const RangeSelect: React.FC = () => {
   const styles = useMultiStyleConfig("Datepicker", {});
 
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Box width={300}>
       <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
@@ -147,12 +148,11 @@ export const RangeSelect: React.FC = () => {
                 <Box w="50%" key={month[0][0].toDateString()}>
                   <Box sx={styles.calendarContainer}>
                     <Box sx={styles.dayLabelContainer}>
-                      {month.length > 0 &&
-                        month.map((day) => (
-                          <Box key={`${day}`} sx={styles.dayLabel}>
-                            {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
-                          </Box>
-                        ))}
+                      {month[0].map((day) => (
+                        <Box key={`${day}`} sx={styles.dayLabel}>
+                          {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
+                        </Box>
+                      ))}
                     </Box>
 
                     {month.map((week) => (
