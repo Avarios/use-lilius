@@ -49,7 +49,6 @@ export const RangeSelect: React.FC = () => {
   const styles = useMultiStyleConfig("Datepicker", {});
 
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <Box width={300}>
       <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
@@ -128,9 +127,9 @@ export const RangeSelect: React.FC = () => {
                 sx={styles.navigationButton}
               />
 
-              {calendar.map((month) => (
-                <Text key={month.firstDay.toDateString()} sx={styles.navigationLabel}>
-                  {format(month.firstDay, "MMMM yyyy")}
+              {calendar.map(([[firstDay]]) => (
+                <Text key={firstDay.toDateString()} sx={styles.navigationLabel}>
+                  {format(firstDay, "MMMM yyyy")}
                 </Text>
               ))}
 
@@ -145,20 +144,20 @@ export const RangeSelect: React.FC = () => {
 
             <Stack direction="row">
               {calendar.map((month) => (
-                <Box w="50%" key={month.firstDay.toDateString()}>
+                <Box w="50%" key={month[0][0].toDateString()}>
                   <Box sx={styles.calendarContainer}>
                     <Box sx={styles.dayLabelContainer}>
-                      {month.weeks.length > 0 &&
-                        month.weeks[0].map((day) => (
+                      {month.length > 0 &&
+                        month.map((day) => (
                           <Box key={`${day}`} sx={styles.dayLabel}>
                             {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
                           </Box>
                         ))}
                     </Box>
 
-                    {month.weeks.map((week) => (
+                    {month.map((week) => (
                       <Box
-                        key={`month-${month.firstDay.toDateString()}-week-${week[0]}`}
+                        key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
                         sx={styles.calendarMatrixContainer}
                       >
                         {week.map((day) => (

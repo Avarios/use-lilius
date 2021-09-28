@@ -78,7 +78,7 @@ export const MultiSelect: React.FC = () => {
       setVisibleTagCount(newVisibleTagCount);
     }
   }, [selected, previouslySelected, visibleTagCount]);
-
+  const [month] = calendar;
   return (
     <Box width={500}>
       <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
@@ -167,16 +167,16 @@ export const MultiSelect: React.FC = () => {
 
             <Box sx={styles.calendarContainer}>
               <Box sx={styles.dayLabelContainer}>
-                {calendar.length > 0 &&
-                  calendar[0].weeks[0].map((day) => (
+                {month.length > 0 &&
+                  month.map((day) => (
                     <Box key={`${day}`} sx={styles.dayLabel}>
                       {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
                     </Box>
                   ))}
               </Box>
 
-              {calendar.length > 0 &&
-                calendar[0].weeks.map((week) => (
+              {month.length > 0 &&
+                month.map((week) => (
                   <Box key={`week-${week[0]}`} sx={styles.calendarMatrixContainer}>
                     {week.map((day) => (
                       <Box

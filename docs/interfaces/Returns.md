@@ -35,13 +35,13 @@
 
 ### calendar
 
-• **calendar**: `Date`[][]
+• **calendar**: `Date`[][][]
 
 A matrix of days based on the current viewing date.
 
 #### Defined in
 
-[use-lilius.ts:176](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L176)
+[use-lilius.ts:184](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L184)
 
 ___
 
@@ -53,7 +53,7 @@ The dates currently selected.
 
 #### Defined in
 
-[use-lilius.ts:131](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L131)
+[use-lilius.ts:139](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L139)
 
 ___
 
@@ -65,7 +65,7 @@ Override the currently selected dates.
 
 #### Defined in
 
-[use-lilius.ts:136](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L136)
+[use-lilius.ts:144](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L144)
 
 ___
 
@@ -78,7 +78,7 @@ the month and year are the only parts used.
 
 #### Defined in
 
-[use-lilius.ts:91](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L91)
+[use-lilius.ts:99](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L99)
 
 ___
 
@@ -91,7 +91,7 @@ the month and year are the only parts used.
 
 #### Defined in
 
-[use-lilius.ts:85](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L85)
+[use-lilius.ts:93](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L93)
 
 ## Methods
 
@@ -107,7 +107,7 @@ Reset the selected dates to [].
 
 #### Defined in
 
-[use-lilius.ts:141](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L141)
+[use-lilius.ts:149](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L149)
 
 ___
 
@@ -129,7 +129,7 @@ Returns a copy of the given date with the time set to 00:00:00:00.
 
 #### Defined in
 
-[use-lilius.ts:74](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L74)
+[use-lilius.ts:82](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L82)
 
 ___
 
@@ -151,7 +151,7 @@ Deselect one or more dates.
 
 #### Defined in
 
-[use-lilius.ts:156](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L156)
+[use-lilius.ts:164](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L164)
 
 ___
 
@@ -174,7 +174,7 @@ Deselect a range of dates (inclusive).
 
 #### Defined in
 
-[use-lilius.ts:171](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L171)
+[use-lilius.ts:179](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L179)
 
 ___
 
@@ -198,7 +198,7 @@ Returns whether or not a date is between 2 other dates (inclusive).
 
 #### Defined in
 
-[use-lilius.ts:79](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L79)
+[use-lilius.ts:87](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L87)
 
 ___
 
@@ -220,7 +220,7 @@ Determine whether or not a date has been selected.
 
 #### Defined in
 
-[use-lilius.ts:146](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L146)
+[use-lilius.ts:154](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L154)
 
 ___
 
@@ -243,7 +243,7 @@ Select one or more dates.
 
 #### Defined in
 
-[use-lilius.ts:151](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L151)
+[use-lilius.ts:159](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L159)
 
 ___
 
@@ -267,7 +267,7 @@ Select a range of dates (inclusive).
 
 #### Defined in
 
-[use-lilius.ts:166](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L166)
+[use-lilius.ts:174](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L174)
 
 ___
 
@@ -290,7 +290,7 @@ Toggle the selection of a date.
 
 #### Defined in
 
-[use-lilius.ts:161](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L161)
+[use-lilius.ts:169](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L169)
 
 ___
 
@@ -312,7 +312,7 @@ Set the viewing date to the given month.
 
 #### Defined in
 
-[use-lilius.ts:101](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L101)
+[use-lilius.ts:109](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L109)
 
 ___
 
@@ -328,7 +328,7 @@ Set the viewing date to the month after the current.
 
 #### Defined in
 
-[use-lilius.ts:111](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L111)
+[use-lilius.ts:119](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L119)
 
 ___
 
@@ -344,7 +344,7 @@ Set the viewing date to the year after the current.
 
 #### Defined in
 
-[use-lilius.ts:126](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L126)
+[use-lilius.ts:134](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L134)
 
 ___
 
@@ -360,7 +360,7 @@ Set the viewing date to the month before the current.
 
 #### Defined in
 
-[use-lilius.ts:106](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L106)
+[use-lilius.ts:114](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L114)
 
 ___
 
@@ -376,7 +376,7 @@ Set the viewing date to the year before the current.
 
 #### Defined in
 
-[use-lilius.ts:121](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L121)
+[use-lilius.ts:129](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L129)
 
 ___
 
@@ -392,7 +392,7 @@ Set the viewing date to today.
 
 #### Defined in
 
-[use-lilius.ts:96](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L96)
+[use-lilius.ts:104](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L104)
 
 ___
 
@@ -414,4 +414,4 @@ Set the viewing date to the given year.
 
 #### Defined in
 
-[use-lilius.ts:116](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L116)
+[use-lilius.ts:124](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L124)

@@ -6,11 +6,26 @@
 
 ### Properties
 
+- [numberOfMonths](Options.md#numberofmonths)
 - [selected](Options.md#selected)
 - [viewing](Options.md#viewing)
 - [weekStartsOn](Options.md#weekstartson)
 
 ## Properties
+
+### numberOfMonths
+
+• `Optional` **numberOfMonths**: `number`
+
+The number of month in calendar.
+
+**`default`** 1
+
+#### Defined in
+
+[use-lilius.ts:75](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L75)
+
+___
 
 ### selected
 
@@ -22,7 +37,7 @@ The initial date(s) selection.
 
 #### Defined in
 
-[use-lilius.ts:67](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L67)
+[use-lilius.ts:68](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L68)
 
 ___
 
@@ -36,7 +51,7 @@ The initial viewing date.
 
 #### Defined in
 
-[use-lilius.ts:60](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L60)
+[use-lilius.ts:61](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L61)
 
 ___
 
@@ -50,4 +65,4 @@ What day a week starts on within the calendar matrix.
 
 #### Defined in
 
-[use-lilius.ts:53](https://github.com/its-danny/use-lilius/blob/dd11a85/src/use-lilius.ts#L53)
+[use-lilius.ts:54](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L54)
