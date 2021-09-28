@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/its-danny/use-lilius/compare/v1.1.3...v2.0.0) (2021-09-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **support for multiple months:** The return type of calendar has changed from Date[][] to Date[][][]
+* calendar data type
+
+### Features
+
+* **support for multiple months:** support for multiple months ([3b1cbd9](https://github.com/its-danny/use-lilius/commit/3b1cbd9daa446eb741afe491ad52830be62759c1))
+* there are several months on the calendar ([069276e](https://github.com/its-danny/use-lilius/commit/069276ef19142eda192d95d131d2d9b2d3c07979))
+
+
+### Bug Fixes
+
+* **examples:** fix some ts errors in the examples ([7674af4](https://github.com/its-danny/use-lilius/commit/7674af41d6d1b0176db20872160d98326ac0edef))
+
 ### [1.1.3](https://github.com/its-danny/use-lilius/compare/v1.1.1...v1.1.3) (2021-08-02)
 
 
