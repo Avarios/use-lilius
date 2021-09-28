@@ -36,4 +36,4 @@ use-lilius
 
 #### Defined in
 
-[use-lilius.ts:192](https://github.com/wappla/use-lilius/blob/6b366c7/src/use-lilius.ts#L192)
+[use-lilius.ts:192](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L192)
