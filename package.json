@@ -25,6 +25,10 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "volta": {
+    "node": "15.14.0",
+    "yarn": "1.22.15"
+  },
   "scripts": {
     "lint": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern *.mdx",
     "fix": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern *.mdx --fix",
@@ -49,7 +53,7 @@
     "@testing-library/react-hooks": "^7.0.0",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "babel-loader": "^8.2.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.21.0",
