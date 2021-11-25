@@ -203,7 +203,7 @@ export const SingleSelect: React.FC = () => {
               <Box sx={styles.dayLabelContainer}>
                 {calendar[0][0].map((day) => (
                   <Box key={`${day}`} sx={styles.dayLabel}>
-                    {["Sun", "Mon", "Tue", "Wed", "Tue", "Thu", "Fri", "Sat"][getDay(day)]}
+                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
                   </Box>
                 ))}
               </Box>
