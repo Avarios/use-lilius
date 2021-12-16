@@ -1,7 +1,7 @@
 <div align="center">
   <h1>use-lilius</h1>
 
-  <img src="./meta/logo.png" width="200px">
+  [<img src="./meta/logo.png" width="200px">](https://en.wikipedia.org/wiki/Aloysius_Lilius)
 
   <p>A headless calendar hook for React.</p>
 
