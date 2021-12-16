@@ -1,7 +1,7 @@
 <div align="center">
   <h1>use-lilius</h1>
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Mezzobusto-Lilio-Capoano.jpg/175px-Mezzobusto-Lilio-Capoano.jpg">
+  <img src="./meta/logo.png" width="200px">
 
   <p>A headless calendar hook for React.</p>
 
