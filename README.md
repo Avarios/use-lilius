@@ -8,6 +8,7 @@
   [![npm](https://img.shields.io/npm/v/use-lilius)](https://www.npmjs.com/package/use-lilius)
   ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/its-danny/use-lilius/test)
   ![LGTM Alerts](https://img.shields.io/lgtm/alerts/github/its-danny/use-lilius)
+  [![DeepScan grade](https://deepscan.io/api/teams/16450/projects/19746/branches/517163/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16450&pid=19746&bid=517163)
   [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-pink.svg)](https://conventionalcommits.org)
   [![License](https://img.shields.io/github/license/its-danny/use-lilius)](LICENSE)
 </div>
