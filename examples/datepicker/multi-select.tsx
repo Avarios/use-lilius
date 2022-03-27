@@ -76,17 +76,17 @@ export const MultiSelect: React.FC = () => {
         <PopoverTrigger>
           <Box
             alignItems="center"
-            borderColor="gray.200"
             borderRadius={4}
             borderWidth={1}
             display="flex"
             justifyContent="space-between"
             padding={2}
+            sx={styles.input}
             width="100%"
           >
             <Box overflow="hidden" ref={listRef} width="100%">
               {selected.length === 0 && (
-                <Text color="gray.300" paddingLeft={2}>
+                <Text paddingLeft={2} sx={styles.placeholder}>
                   Select Dates
                 </Text>
               )}
@@ -122,10 +122,10 @@ export const MultiSelect: React.FC = () => {
 
             <IconButton
               aria-label="Open Calendar"
-              colorScheme={isOpen ? "blue" : "gray"}
               icon={<IoCalendarClearSharp />}
               minWidth="auto"
               onClick={() => setIsOpen(!isOpen)}
+              sx={styles.icon}
               variant="link"
               _focus={{
                 outline: "none",

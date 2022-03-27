@@ -2,6 +2,9 @@ import { ComponentMultiStyleConfig, extendTheme } from "@chakra-ui/react";
 
 const Datepicker: ComponentMultiStyleConfig = {
   parts: [
+    "input",
+    "icon",
+    "placeholder",
     "popContent",
     "popBody",
     "shortcutButtonGroup",
@@ -19,8 +22,20 @@ const Datepicker: ComponentMultiStyleConfig = {
     "todayButton",
   ],
 
-  baseStyle: ({ colorScheme = "blue", theme }) => {
+  baseStyle: ({ colorMode, colorScheme = "blue", theme }) => {
     return {
+      input: {
+        borderColor: colorMode === "light" ? "gray.300" : "gray.700",
+      },
+
+      icon: {
+        color: colorMode === "light" ? "gray.300" : "gray.700",
+      },
+
+      placeholder: {
+        color: colorMode === "light" ? "gray.300" : "gray.700",
+      },
+
       popContent: {
         _focus: {
           outline: "none",
@@ -56,8 +71,8 @@ const Datepicker: ComponentMultiStyleConfig = {
       },
 
       navigationButton: {
-        backgroundColor: "white",
-        borderColor: theme.colors.gray[200],
+        backgroundColor: colorMode === "light" ? "white" : "gray.700",
+        borderColor: colorMode === "light" ? "gray.200" : "gray.500",
         borderWidth: 1,
         shadow: "sm",
 
@@ -70,7 +85,7 @@ const Datepicker: ComponentMultiStyleConfig = {
         },
 
         _hover: {
-          backgroundColor: "white",
+          backgroundColor: "unset",
           shadow: "md",
         },
       },
@@ -91,7 +106,7 @@ const Datepicker: ComponentMultiStyleConfig = {
 
       dayLabel: {
         alignItems: "center",
-        color: theme.colors.gray[600],
+        color: colorMode === "light" ? "gray.400" : "gray.500",
         display: "flex",
         fontSize: "sm",
         height: 10,
@@ -112,17 +127,18 @@ const Datepicker: ComponentMultiStyleConfig = {
         width: "100%",
 
         _hover: {
-          backgroundColor: theme.colors[colorScheme][50],
+          backgroundColor: "none",
+          color: theme.colors[colorScheme][400],
           cursor: "pointer",
         },
 
         '&[data-in-range="false"]': {
-          color: theme.colors.gray[400],
+          color: colorMode === "light" ? "gray.400" : "gray.500",
         },
 
         '&[data-selected="true"]': {
           backgroundColor: theme.colors[colorScheme][400],
-          color: "white",
+          color: colorMode === "light" ? "white" : "gray.700",
           shadow: "md",
 
           _hover: {
@@ -130,7 +146,7 @@ const Datepicker: ComponentMultiStyleConfig = {
           },
 
           '&[data-today="true"]': {
-            color: "white",
+            color: colorMode === "light" ? "white" : "gray.700",
           },
         },
 
@@ -142,6 +158,9 @@ const Datepicker: ComponentMultiStyleConfig = {
 
         '&[data-dont-round="true"]': {
           borderRadius: 0,
+          backgroundColor: colorMode === "light" ? "gray.200" : "gray.600",
+          color: colorMode === "light" ? "gray.700" : "white",
+          shadow: "none",
         },
 
         '&[data-dont-round-left="true"]': {

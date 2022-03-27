@@ -1,7 +1,5 @@
-import { Meta } from '@storybook/addon-docs/blocks';
-import { ChakraProvider } from "@chakra-ui/react"
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 import { RangeSelect } from "./range-select";
-import { theme } from "./datepicker.theme"
 
 <Meta
   title="Datepicker/Range Select"
@@ -12,6 +10,6 @@ A range-select datepicker using [⚡ Chakra](https://chakra-ui.com/).
 
 > 🔎 [Source](https://github.com/its-danny/use-lilius/blob/main/examples/datepicker/range-select.tsx)
 
-<ChakraProvider theme={theme}>
+<Story name="Range Select">
   <RangeSelect />
-</ChakraProvider>
+</Story>
