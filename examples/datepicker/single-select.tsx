@@ -140,10 +140,10 @@ export const SingleSelect: React.FC = () => {
             <InputRightElement>
               <IconButton
                 aria-label="Open Calendar"
-                colorScheme={isOpen ? "blue" : "gray"}
                 icon={<IoCalendarClearSharp />}
                 minWidth="auto"
                 onClick={() => setIsOpen(!isOpen)}
+                sx={styles.icon}
                 variant="link"
                 _focus={{
                   outline: "none",
