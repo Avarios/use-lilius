@@ -20,6 +20,7 @@
   "files": [
     "build"
   ],
+  "packageManager": "yarn@3.2.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -30,15 +31,17 @@
     "yarn": "1.22.15"
   },
   "scripts": {
-    "lint": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern *.mdx",
-    "fix": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern *.mdx --fix",
+    "lint": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern \"examples/**/*.mdx\"",
+    "fix": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern \"examples/**/*.mdx\" --fix",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs/ src/use-lilius.ts",
     "build": "rollup -c",
     "release": "standard-version",
-    "prepare": "husky install"
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
@@ -71,6 +74,7 @@
     "framer-motion": "^4.0.3",
     "husky": "^7.0.1",
     "jest": "^26.6.3",
+    "pinst": "^3.0.0",
     "prettier": "^2.4.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
