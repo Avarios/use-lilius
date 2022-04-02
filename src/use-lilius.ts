@@ -280,6 +280,7 @@ export const useLilius = ({
       ),
     [viewing, weekStartsOn, numberOfMonths],
   );
+
   return {
     clearTime,
     inRange,
