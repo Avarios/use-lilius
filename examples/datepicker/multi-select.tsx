@@ -32,13 +32,13 @@ export const MultiSelect: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const previouslySelected = usePrevious(selected);
   const [visibleTagCount, setVisibleTagCount] = useState(0);
-
+  const shouldRecountTags = previouslySelected?.length || selected.length > visibleTagCount;
   // We only want to show as many selected dates as will fit
   // within the pseudo input field. We track how many that is so
   // that we can render a +{leftover} tag at the end of the list
   // if we need to.
   useLayoutEffect(() => {
-    if (previouslySelected?.length || selected.length > visibleTagCount) {
+    if (shouldRecountTags) {
       const COUNT_TAG_WIDTH = 50;
 
       let newVisibleTagCount = selected.length;
@@ -68,7 +68,7 @@ export const MultiSelect: React.FC = () => {
 
       setVisibleTagCount(newVisibleTagCount);
     }
-  }, [selected, previouslySelected, visibleTagCount]);
+  }, [selected, shouldRecountTags]);
 
   return (
     <Box width={500}>
