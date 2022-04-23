@@ -93,7 +93,7 @@
     "date-fns": "^2.28.0"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "*",
+    "react-dom": "*"
   }
 }

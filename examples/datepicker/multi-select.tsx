@@ -33,6 +33,7 @@ export const MultiSelect: React.FC = () => {
   const previouslySelected = usePrevious(selected);
   const [visibleTagCount, setVisibleTagCount] = useState(0);
   const shouldRecountTags = previouslySelected?.length || selected.length > visibleTagCount;
+
   // We only want to show as many selected dates as will fit
   // within the pseudo input field. We track how many that is so
   // that we can render a +{leftover} tag at the end of the list
