@@ -19,11 +19,6 @@
 yarn add use-lilius
 ```
 
-Be sure you have the peer dependencies installed:
-
-- react `^17.0.0`
-- react-dom `^17.0.0`
-
 ## Usage
 
 - The [API docs](docs/README.md) should help you get started.
