@@ -211,7 +211,7 @@ export const useLilius = ({
 
   const viewNextYear = useCallback(() => setViewing((v) => addYears(v, 1)), []);
 
-  const [selected, setSelected] = useState<Date[]>(initialSelected);
+  const [selected, setSelected] = useState<Date[]>(initialSelected.map(clearTime));
 
   const clearSelected = () => setSelected([]);
 
