@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/its-danny/use-lilius/compare/v2.0.0...v2.0.1) (2022-06-11)
+
+
+### Bug Fixes
+
+* clear time off initially selected dates ([3f58372](https://github.com/its-danny/use-lilius/commit/3f58372d812b8f9c7bc311c3e9916c3c12e7a205)), closes [#492](https://github.com/its-danny/use-lilius/issues/492)
+
 ## [2.0.0](https://github.com/its-danny/use-lilius/compare/v1.1.3...v2.0.0) (2021-09-28)
 
 
