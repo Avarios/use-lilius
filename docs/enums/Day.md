@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[use-lilius.ts:44](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L44)
+[use-lilius.ts:44](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L44)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:40](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L40)
+[use-lilius.ts:40](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L40)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:45](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L45)
+[use-lilius.ts:45](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L45)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:39](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L39)
+[use-lilius.ts:39](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L39)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:43](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L43)
+[use-lilius.ts:43](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L43)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:41](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L41)
+[use-lilius.ts:41](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L41)
 
 ___
 
@@ -82,4 +82,4 @@ ___
 
 #### Defined in
 
-[use-lilius.ts:42](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L42)
+[use-lilius.ts:42](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L42)

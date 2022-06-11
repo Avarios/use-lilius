@@ -22,7 +22,7 @@ use-lilius
 
 ### useLilius
 
-▸ `Const` **useLilius**(`__namedParameters?`): [`Returns`](interfaces/Returns.md)
+▸ **useLilius**(`__namedParameters?`): [`Returns`](interfaces/Returns.md)
 
 #### Parameters
 
@@ -36,4 +36,4 @@ use-lilius
 
 #### Defined in
 
-[use-lilius.ts:192](https://github.com/its-danny/use-lilius/blob/c622a6d/src/use-lilius.ts#L192)
+[use-lilius.ts:192](https://github.com/its-danny/use-lilius/blob/b9482cf/src/use-lilius.ts#L192)
