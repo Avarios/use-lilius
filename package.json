@@ -39,7 +39,7 @@
     "build-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs/ src/use-lilius.ts",
     "build": "rollup -c",
     "release": "standard-version",
-    "postinstall": "husky install",
+    "prepare": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
   },
