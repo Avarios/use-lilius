@@ -26,10 +26,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "volta": {
-    "node": "16.14.2",
-    "yarn": "1.22.15"
-  },
   "scripts": {
     "lint": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern \"examples/**/*.mdx\"",
     "fix": "eslint \"{src,examples}/**/*\" --ext .js,.jsx,.ts,.tsx --ignore-pattern \"examples/**/*.mdx\" --fix",
