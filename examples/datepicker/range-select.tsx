@@ -160,44 +160,65 @@ export const RangeSelect: React.FC = () => {
                         key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
                         sx={styles.calendarMatrixContainer}
                       >
-                        {week.map((day) => (
+                        {week.map((day) => {
+
+                          const start = selected[0]
+                          const end = selected[selected.length - 1]
+                          const isStart = isEqual(day, start)
+                          const isEnd = isEqual(day, end)
+                          const isFloorBoundStart = (isStart && start > end)
+                          const isFloorBoundEnd = (isEnd && start < end)
+                          const isCeilBoundStart = (isStart && start < end)
+                          const isCeilBoundEnd = (isEnd && start > end)
+
+                          return (
                           <Box
                             data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
                             data-selected={isSelected(day)}
                             data-today={isToday(day)}
+                            data-is-origin={isEqual(selected[0], day)}
                             data-dont-round={
                               isSelected(day) &&
                               !isEqual(day, selected[0]) &&
                               !isEqual(day, selected[selected.length - 1])
                             }
-                            data-dont-round-left={isSelected(day) && !isEqual(day, selected[0])}
-                            data-dont-round-right={isSelected(day) && !isEqual(day, selected[selected.length - 1])}
+                            data-dont-round-left={isSelected(day) && isFloorBoundStart || isFloorBoundEnd }
+                            data-dont-round-right={isSelected(day) && isCeilBoundStart || isCeilBoundEnd }
                             key={`${day}`}
                             onClick={() => {
-                              const sorted = selected.sort((a, b) => compareAsc(a, b));
 
-                              if (sorted.length === 0) {
+                              if (selected.length === 0) {
                                 select(day);
                               } else if (isSelected(day)) {
                                 if (selected.length === 1) {
                                   deselect(day);
                                 } else {
-                                  const range = eachDayOfInterval({ start: sorted[0], end: day });
-                                  const diff = sorted.filter((d) =>
+
+                                  const start = selected[0]
+                                  const end = day
+                                  let range: Date[] = []
+                                  if(start > end) {
+                                    range = eachDayOfInterval({ start: end, end: start }).reverse()
+                                  } else {
+                                    range = eachDayOfInterval({ start: start, end: end })
+                                  }
+
+                                  const diff = selected.filter((d) =>
                                     range.map((a) => a.getTime()).includes(d.getTime()),
                                   );
 
                                   selectRange(diff[0], diff[diff.length - 1], true);
                                 }
                               } else {
-                                selectRange(sorted[0], day, true);
+                                selectRange(selected[0], day, true);
                               }
                             }}
                             sx={styles.calendarMatrixDay}
                           >
                             <Text>{format(day, "dd")}</Text>
                           </Box>
-                        ))}
+                          )
+                        })}
                       </Box>
                     ))}
                   </Box>

@@ -242,9 +242,21 @@ export const useLilius = ({
 
   const selectRange = useCallback((start: Date, end: Date, replaceExisting?: boolean) => {
     if (replaceExisting) {
-      setSelected(eachDayOfInterval({ start, end }));
+
+      if (start < end) {
+        setSelected(eachDayOfInterval({ start, end }));
+        return 
+      }
+      setSelected(eachDayOfInterval({ start: end, end: start }).reverse());
+
     } else {
-      setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ start, end })));
+
+      if (start < end) {
+        setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ start, end })));
+        return
+      }
+      setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ end, start })));
+
     }
   }, []);
 
