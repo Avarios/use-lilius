@@ -1,20 +1,24 @@
 import {
   addMonths,
+  addSeconds,
   addYears,
   eachDayOfInterval,
   eachMonthOfInterval,
   eachWeekOfInterval,
+  endOfDay,
   endOfMonth,
   endOfWeek,
   isAfter,
   isBefore,
   isEqual,
+  isSameDay,
   set,
   setMonth,
   setYear,
   startOfMonth,
   startOfToday,
   startOfWeek,
+  subMinutes,
   subMonths,
   subYears,
 } from "date-fns";
@@ -73,6 +77,13 @@ export interface Options {
    * @default 1
    */
   numberOfMonths?: number;
+
+  /**
+   * the minimal intervall selected.
+   *
+   * @default 1
+   */
+  numberOfIntervall?: number;
 }
 
 export interface Returns {
@@ -154,6 +165,46 @@ export interface Returns {
   isSelected: (date: Date) => boolean;
 
   /**
+   * Determine wheter a date is on the beginning of a range.
+   */
+  isStart: (date: Date) => boolean;
+
+  /**
+   * Determine wheter a date is on the end of a range.
+   */
+  isEnd: (date: Date) => boolean;
+
+  /**
+   * Determine if the start and the end of a range fall on the same day.
+   */
+  isOriginDay: () => boolean;
+
+  /**
+   * Determine if a date is at a pole of a range.
+   */
+  isAtPole: (date: Date) => boolean;
+
+  /**
+   * Determine wheter a date at the beginning is at the floor of a range.
+   */
+  isFloorBoundStart: (date: Date) => boolean;
+
+  /**
+   * Determine wheter a date at the beginning is at the ceil of a range.
+   */
+  isCeilBoundStart: (date: Date) => boolean;
+
+  /**
+   * Determine wheter a date at the end is at the floor of a range.
+   */
+  isFloorBoundEnd: (date: Date) => boolean;
+
+  /**
+   * Determine wheter a date at the end is at the ceil of a range.
+   */
+  isCeilBoundEnd: (date: Date) => boolean;
+
+  /**
    * Select one or more dates.
    */
   select: (date: Date | Date[], replaceExisting?: boolean) => void;
@@ -189,11 +240,34 @@ const inRange = (date: Date, min: Date, max: Date) =>
 
 const clearTime = (date: Date) => set(date, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
+const setEndOfDayIntervall = (date: Date, numberOfIntervall: number) =>
+  addSeconds(subMinutes(endOfDay(date), numberOfIntervall), 1);
+
+const eachdayofIntervall = (start: Date, end: Date, numberOfIntervall: number) => {
+  if (start === end) {
+    const endDay = setEndOfDayIntervall(end, numberOfIntervall);
+    return [start, endDay];
+  }
+
+  if (start < end) {
+    const eachDay = eachDayOfInterval({ start, end });
+    const endDay = setEndOfDayIntervall(end, numberOfIntervall);
+    eachDay.splice(eachDay.length - 1, 1, endDay);
+    return eachDay;
+  }
+
+  const eachDay = eachDayOfInterval({ start: end, end: start }).reverse();
+  const endDay = setEndOfDayIntervall(end, numberOfIntervall);
+  eachDay.splice(eachDay.length - 1, 1, endDay);
+  return eachDay;
+};
+
 export const useLilius = ({
   weekStartsOn = Day.SUNDAY,
   viewing: initialViewing = new Date(),
   selected: initialSelected = [],
   numberOfMonths = 1,
+  numberOfIntervall = 1,
 }: Options = {}): Returns => {
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
@@ -216,6 +290,22 @@ export const useLilius = ({
   const clearSelected = () => setSelected([]);
 
   const isSelected = useCallback((date: Date) => selected.findIndex((s) => isEqual(s, date)) > -1, [selected]);
+
+  const isStart = (date: Date) => isSameDay(date, selected[0]);
+
+  const isEnd = (date: Date) => isSameDay(date, selected[selected.length - 1]);
+
+  const isOriginDay = () => selected.length > 1 && isSameDay(selected[0], selected[selected.length - 1]);
+
+  const isAtPole = (date: Date) => isSameDay(date, selected[0]) || isSameDay(date, selected[selected.length - 1]);
+
+  const isFloorBoundStart = (date: Date) => isStart(date) && selected[0] > selected[selected.length - 1];
+
+  const isCeilBoundStart = (date: Date) => isStart(date) && selected[0] < selected[selected.length - 1];
+
+  const isFloorBoundEnd = (date: Date) => isEnd(date) && selected[0] < selected[selected.length - 1];
+
+  const isCeilBoundEnd = (date: Date) => isEnd(date) && selected[0] > selected[selected.length - 1];
 
   const select = useCallback((date: Date | Date[], replaceExisting?: boolean) => {
     if (replaceExisting) {
@@ -240,25 +330,20 @@ export const useLilius = ({
     [deselect, isSelected, select],
   );
 
-  const selectRange = useCallback((start: Date, end: Date, replaceExisting?: boolean) => {
-    if (replaceExisting) {
-
-      if (start < end) {
-        setSelected(eachDayOfInterval({ start, end }));
-        return 
+  const selectRange = useCallback(
+    (start: Date, end: Date, replaceExisting?: boolean) => {
+      if (replaceExisting) {
+        setSelected(eachdayofIntervall(start, end, numberOfIntervall));
+      } else {
+        if (start < end) {
+          setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ start, end })));
+          return;
+        }
+        setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ end, start })));
       }
-      setSelected(eachDayOfInterval({ start: end, end: start }).reverse());
-
-    } else {
-
-      if (start < end) {
-        setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ start, end })));
-        return
-      }
-      setSelected((selectedItems) => selectedItems.concat(eachDayOfInterval({ end, start })));
-
-    }
-  }, []);
+    },
+    [numberOfIntervall],
+  );
 
   const deselectRange = useCallback((start: Date, end: Date) => {
     setSelected((selectedItems) =>
@@ -308,7 +393,15 @@ export const useLilius = ({
     selected,
     setSelected,
     clearSelected,
+    isAtPole,
     isSelected,
+    isStart,
+    isEnd,
+    isOriginDay,
+    isFloorBoundStart,
+    isCeilBoundStart,
+    isFloorBoundEnd,
+    isCeilBoundEnd,
     select,
     deselect,
     toggle,
