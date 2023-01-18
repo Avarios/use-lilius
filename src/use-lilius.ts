@@ -24,6 +24,8 @@ import {
 } from "date-fns";
 import { useCallback, useMemo, useState } from "react";
 
+export type Schedule = { id: number; start: Date; end: Date };
+
 export enum Month {
   JANUARY,
   FEBRUARY,
@@ -165,6 +167,11 @@ export interface Returns {
   isSelected: (date: Date) => boolean;
 
   /**
+   * Determine wheter a valid range has been selected.
+   */
+  israngeSelected: () => boolean;
+
+  /**
    * Determine wheter a date is on the beginning of a range.
    */
   isStart: (date: Date) => boolean;
@@ -230,9 +237,31 @@ export interface Returns {
   deselectRange: (start: Date, end: Date) => void;
 
   /**
+   * An array of scheduled events
+   */
+  schedule: Schedule[];
+
+  setSchedule: React.Dispatch<React.SetStateAction<Schedule[]>>;
+
+  /**
+   * Determine the earliest date the schedule holds.
+   */
+  minSchedule: (date: Date) => boolean;
+
+  /**
+   * Determine the latest date the schedule holds.
+   */
+  maxSchedule: (date: Date) => boolean;
+
+  /**
+   * Determine
+   */
+  isinSchedule: (date: Date) => boolean;
+
+  /**
    * A matrix of days based on the current viewing date.
    */
-  calendar: Date[][][];
+  calendar: [Date, Map<Date, Schedule[]>?][][];
 }
 
 const inRange = (date: Date, min: Date, max: Date) =>
@@ -271,6 +300,8 @@ export const useLilius = ({
 }: Options = {}): Returns => {
   const [viewing, setViewing] = useState<Date>(initialViewing);
 
+  const [schedule, setSchedule] = useState<Schedule[]>([]);
+
   const viewToday = useCallback(() => setViewing(startOfToday()), [setViewing]);
 
   const viewMonth = useCallback((month: Month) => setViewing((v) => setMonth(v, month)), []);
@@ -290,6 +321,8 @@ export const useLilius = ({
   const clearSelected = () => setSelected([]);
 
   const isSelected = useCallback((date: Date) => selected.findIndex((s) => isEqual(s, date)) > -1, [selected]);
+
+  const israngeSelected = () => selected.length > 1;
 
   const isStart = (date: Date) => isSameDay(date, selected[0]);
 
@@ -356,7 +389,38 @@ export const useLilius = ({
     );
   }, []);
 
-  const calendar = useMemo<Date[][][]>(
+  const minSchedule = (date: Date) => schedule.length > 0 && schedule[0].start <= date;
+
+  const maxSchedule = (date: Date) => schedule.length > 0 && schedule[schedule.length - 1].end >= date;
+
+  const isinSchedule = (date: Date) => minSchedule(date) && maxSchedule(date);
+
+  const isOnSameDay = (start: Date, end: Date, date: Date) => {
+    const startofDay = date;
+    const endofDay = endOfDay(date);
+
+    return (startofDay < start || isEqual(startofDay, start)) && (endofDay > end || isEqual(endofDay, end));
+  };
+
+  const isAfterStartAndBeforeEndPolar = (start: Date, end: Date, date: Date) => {
+    const startofDay = date;
+    const endofDay = endOfDay(date);
+    return (startofDay < start || isEqual(startofDay, start)) && endofDay < end && endofDay > start;
+  };
+
+  const isBeforeEndAndAfterStartPolar = (start: Date, end: Date, date: Date) => {
+    const startofDay = date;
+    const endofDay = endOfDay(date);
+    return startofDay > start && startofDay < end && (endofDay > end || isEqual(endofDay, end));
+  };
+
+  const isAfterStartBeforeEndInbetween = (start: Date, end: Date, date: Date) => {
+    const startofDay = date;
+    const endofDay = endOfDay(date);
+    return startofDay > start && endofDay < end && endofDay > start && startofDay < end;
+  };
+
+  const calendar = useMemo<[Date, Map<Date, Schedule[]>?][][]>(
     () =>
       eachMonthOfInterval({
         start: startOfMonth(viewing),
@@ -368,14 +432,32 @@ export const useLilius = ({
             end: endOfMonth(month),
           },
           { weekStartsOn },
-        ).map((week) =>
-          eachDayOfInterval({
+        ).map((week) => {
+          const map = new Map<Date, Schedule[]>();
+          const dayInWeekArray = eachDayOfInterval({
             start: startOfWeek(week, { weekStartsOn }),
             end: endOfWeek(week, { weekStartsOn }),
-          }),
-        ),
+          });
+
+          for (let i = 0; i < dayInWeekArray.length; i += 1) {
+            const day = dayInWeekArray[i];
+
+            const scheduleArray = schedule.filter(
+              (event) =>
+                isOnSameDay(event.start, event.end, day) ||
+                isAfterStartAndBeforeEndPolar(event.start, event.end, day) ||
+                isBeforeEndAndAfterStartPolar(event.start, event.end, day) ||
+                isAfterStartBeforeEndInbetween(event.start, event.end, day),
+            );
+
+            map.set(day, scheduleArray);
+          }
+
+          const tuple: [Date, Map<Date, Schedule[]>] = [week, map];
+          return tuple;
+        }),
       ),
-    [viewing, weekStartsOn, numberOfMonths],
+    [viewing, weekStartsOn, numberOfMonths, schedule],
   );
 
   return {
@@ -395,6 +477,7 @@ export const useLilius = ({
     clearSelected,
     isAtPole,
     isSelected,
+    israngeSelected,
     isStart,
     isEnd,
     isOriginDay,
@@ -407,6 +490,11 @@ export const useLilius = ({
     toggle,
     selectRange,
     deselectRange,
+    schedule,
+    setSchedule,
+    minSchedule,
+    maxSchedule,
+    isinSchedule,
     calendar,
   };
 };
