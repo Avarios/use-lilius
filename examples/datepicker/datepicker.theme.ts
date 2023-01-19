@@ -165,10 +165,16 @@ const Datepicker: ComponentMultiStyleConfig = {
 
         '&[data-dont-round-left="true"]': {
           borderLeftRadius: 0,
+          clipPath: "inset(-5px -5px -5px -0.5px)",
         },
 
         '&[data-dont-round-right="true"]': {
           borderRightRadius: 0,
+          clipPath: "inset(-5px 0px -5px -5px)",
+        },
+
+        '&[data-bin="true"]': {
+          backgroundColor: "blue.200",
         },
       },
 

@@ -13,19 +13,7 @@ import {
   Text,
   useMultiStyleConfig,
 } from "@chakra-ui/react";
-import {
-  addWeeks,
-  compareAsc,
-  eachDayOfInterval,
-  endOfMonth,
-  endOfWeek,
-  format,
-  getDay,
-  isEqual,
-  isToday,
-  startOfMonth,
-  startOfWeek,
-} from "date-fns";
+import { eachDayOfInterval, endOfMonth, format, getDay, isEqual, isToday, startOfMonth } from "date-fns";
 import React, { useState } from "react";
 import { IoArrowForwardSharp, IoCalendarClearSharp, IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
 
@@ -34,16 +22,24 @@ import { useLilius } from "../../src/use-lilius";
 export const RangeSelect: React.FC = () => {
   const {
     calendar,
-    deselect,
     inRange,
+    isAtPole,
     isSelected,
+    isStart,
+    isOriginDay,
+    isFloorBoundStart,
+    isFloorBoundEnd,
+    isCeilBoundStart,
+    isCeilBoundEnd,
     select,
     selected,
+    setSelected,
     selectRange,
-    viewing,
     viewNextMonth,
     viewPreviousMonth,
     viewToday,
+    schedule,
+    setSchedule,
   } = useLilius({ numberOfMonths: 2 });
 
   const styles = useMultiStyleConfig("Datepicker", {});
@@ -98,22 +94,21 @@ export const RangeSelect: React.FC = () => {
         <PopoverContent sx={styles.popContent} w="600px">
           <PopoverBody sx={styles.popBody}>
             <ButtonGroup sx={styles.shortcutButtonGroup}>
-              <Button
-                onClick={() => selectRange(startOfWeek(new Date()), endOfWeek(new Date()), true)}
-                size="sm"
-                sx={styles.shortcutButton}
-              >
-                This Week
+              <Button onClick={() => setSelected([])} size="sm" sx={styles.shortcutButton}>
+                cancel selection
               </Button>
 
               <Button
-                onClick={() =>
-                  selectRange(startOfWeek(addWeeks(new Date(), 1)), endOfWeek(addWeeks(new Date(), 1)), true)
-                }
+                onClick={() => {
+                  setSchedule(
+                    schedule.concat([{ id: schedule.length, start: selected[0], end: selected[selected.length - 1] }]),
+                  );
+                  setSelected([]);
+                }}
                 size="sm"
                 sx={styles.shortcutButton}
               >
-                Next Week
+                addSchedule
               </Button>
             </ButtonGroup>
 
@@ -128,11 +123,18 @@ export const RangeSelect: React.FC = () => {
                 sx={styles.navigationButton}
               />
 
-              {calendar.map(([[firstDay]]) => (
-                <Text key={firstDay.toDateString()} sx={styles.navigationLabel}>
-                  {format(firstDay, "MMMM yyyy")}
-                </Text>
-              ))}
+              {calendar.map((month) => {
+                const firstWeek = month[0][1];
+                if (!firstWeek) throw new Error("this is not supposed to happen");
+                const firstWeekDayArray = [...firstWeek.keys()];
+                const firstofMonth = firstWeekDayArray.filter((el) => el.getDate() === 1)[0];
+
+                return (
+                  <Text key={firstofMonth.toDateString()} sx={styles.navigationLabel}>
+                    {format(firstofMonth, "MMMM yyyy")}
+                  </Text>
+                );
+              })}
 
               <IconButton
                 aria-label="Next Month"
@@ -144,65 +146,96 @@ export const RangeSelect: React.FC = () => {
             </Box>
 
             <Stack direction="row">
-              {calendar.map((month) => (
-                <Box w="50%" key={month[0][0].toDateString()}>
-                  <Box sx={styles.calendarContainer}>
-                    <Box sx={styles.dayLabelContainer}>
-                      {month[0].map((day) => (
-                        <Box key={`${day}`} sx={styles.dayLabel}>
-                          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
-                        </Box>
-                      ))}
-                    </Box>
+              {calendar.map((month) => {
+                const firstWeek = month[0][1];
+                if (!firstWeek) throw new Error("this is not supposed to happen");
+                const firstWeekDayArray = [...firstWeek.keys()];
+                const firstofMonth = firstWeekDayArray.filter((el) => el.getDate() === 1)[0];
 
-                    {month.map((week) => (
-                      <Box
-                        key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
-                        sx={styles.calendarMatrixContainer}
-                      >
-                        {week.map((day) => (
-                          <Box
-                            data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
-                            data-selected={isSelected(day)}
-                            data-today={isToday(day)}
-                            data-dont-round={
-                              isSelected(day) &&
-                              !isEqual(day, selected[0]) &&
-                              !isEqual(day, selected[selected.length - 1])
-                            }
-                            data-dont-round-left={isSelected(day) && !isEqual(day, selected[0])}
-                            data-dont-round-right={isSelected(day) && !isEqual(day, selected[selected.length - 1])}
-                            key={`${day}`}
-                            onClick={() => {
-                              const sorted = selected.sort((a, b) => compareAsc(a, b));
-
-                              if (sorted.length === 0) {
-                                select(day);
-                              } else if (isSelected(day)) {
-                                if (selected.length === 1) {
-                                  deselect(day);
-                                } else {
-                                  const range = eachDayOfInterval({ start: sorted[0], end: day });
-                                  const diff = sorted.filter((d) =>
-                                    range.map((a) => a.getTime()).includes(d.getTime()),
-                                  );
-
-                                  selectRange(diff[0], diff[diff.length - 1], true);
-                                }
-                              } else {
-                                selectRange(sorted[0], day, true);
-                              }
-                            }}
-                            sx={styles.calendarMatrixDay}
-                          >
-                            <Text>{format(day, "dd")}</Text>
-                          </Box>
-                        ))}
+                return (
+                  <Box w="50%" key={month[0][0].toDateString()}>
+                    <Box sx={styles.calendarContainer}>
+                      <Box sx={styles.dayLabelContainer}>
+                        {firstWeekDayArray.map((day) => {
+                          return (
+                            <Box key={`${day}`} sx={styles.dayLabel}>
+                              {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
+                            </Box>
+                          );
+                        })}
                       </Box>
-                    ))}
+
+                      {month.map((week) => {
+                        const weekDayMap = week[1];
+                        if (!weekDayMap) throw new Error("this is not a date");
+                        const weekArray = [...weekDayMap];
+
+                        return (
+                          <Box
+                            key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
+                            sx={styles.calendarMatrixContainer}
+                          >
+                            {weekArray.map((dayTouple) => {
+                              const day = dayTouple[0];
+                              const daySchedule = dayTouple[1];
+                              if (!day || !daySchedule) throw new Error("this is not supposed to happen");
+
+                              return (
+                                <Box
+                                  data-in-range={inRange(day, startOfMonth(firstofMonth), endOfMonth(firstofMonth))}
+                                  data-selected={isAtPole(day)}
+                                  data-today={isToday(day)}
+                                  data-dont-round={
+                                    isSelected(day) &&
+                                    !isEqual(day, selected[0]) &&
+                                    !isEqual(day, selected[selected.length - 1])
+                                  }
+                                  data-end={isStart(day)}
+                                  data-dont-round-left={
+                                    isAtPole(day) && !isOriginDay() && (isFloorBoundStart(day) || isFloorBoundEnd(day))
+                                  }
+                                  data-dont-round-right={
+                                    isAtPole(day) && !isOriginDay() && (isCeilBoundStart(day) || isCeilBoundEnd(day))
+                                  }
+                                  data-bin={daySchedule.length > 0}
+                                  key={`${day}`}
+                                  onClick={() => {
+                                    if (selected.length === 0) {
+                                      select(day);
+                                    } else if (isSelected(day)) {
+                                      if (selected.length === 1) {
+                                        selectRange(selected[0], day, true);
+                                      } else {
+                                        const start = selected[0];
+                                        const end = day;
+                                        let range: Date[] = [];
+                                        if (start > end) {
+                                          range = eachDayOfInterval({ start: end, end: start }).reverse();
+                                        } else {
+                                          range = eachDayOfInterval({ start, end });
+                                        }
+                                        const diff = selected.filter((d) =>
+                                          range.map((a) => a.getTime()).includes(d.getTime()),
+                                        );
+                                        selectRange(diff[0], diff[diff.length - 1], true);
+                                      }
+                                    } else {
+                                      selectRange(selected[0], day, true);
+                                    }
+                                  }}
+                                  sx={styles.calendarMatrixDay}
+                                >
+                                  <Text>{format(day, "dd")}</Text>
+                                </Box>
+                              );
+                            })}
+                          </Box>
+                        );
+                      })}
+                    </Box>
                   </Box>
-                </Box>
-              ))}
+                );
+              })}
             </Stack>
 
             <Divider sx={styles.divider} />
