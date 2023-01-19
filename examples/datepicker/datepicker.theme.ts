@@ -172,6 +172,10 @@ const Datepicker: ComponentMultiStyleConfig = {
           borderRightRadius: 0,
           clipPath: "inset(-5px 0px -5px -5px)",
         },
+
+        '&[data-bin="true"]': {
+          backgroundColor: "blue.200",
+        },
       },
 
       todayButtonGroup: {

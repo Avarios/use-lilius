@@ -26,7 +26,6 @@ export const RangeSelect: React.FC = () => {
     isAtPole,
     isSelected,
     isStart,
-    isEnd,
     isOriginDay,
     isFloorBoundStart,
     isFloorBoundEnd,
@@ -34,6 +33,7 @@ export const RangeSelect: React.FC = () => {
     isCeilBoundEnd,
     select,
     selected,
+    setSelected,
     selectRange,
     viewNextMonth,
     viewPreviousMonth,
@@ -94,12 +94,17 @@ export const RangeSelect: React.FC = () => {
         <PopoverContent sx={styles.popContent} w="600px">
           <PopoverBody sx={styles.popBody}>
             <ButtonGroup sx={styles.shortcutButtonGroup}>
-              <Button onClick={() => true} size="sm" sx={styles.shortcutButton}>
-                log cal
+              <Button onClick={() => setSelected([])} size="sm" sx={styles.shortcutButton}>
+                cancel selection
               </Button>
 
               <Button
-                onClick={() => setSchedule([{ id: schedule.length, start: new Date(), end: new Date() }])}
+                onClick={() => {
+                  setSchedule(
+                    schedule.concat([{ id: schedule.length, start: selected[0], end: selected[selected.length - 1] }]),
+                  );
+                  setSelected([]);
+                }}
                 size="sm"
                 sx={styles.shortcutButton}
               >
@@ -163,14 +168,18 @@ export const RangeSelect: React.FC = () => {
                       {month.map((week) => {
                         const weekDayMap = week[1];
                         if (!weekDayMap) throw new Error("this is not a date");
-                        const weekDayArray = [...weekDayMap.keys()];
+                        const weekArray = [...weekDayMap];
 
                         return (
                           <Box
                             key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
                             sx={styles.calendarMatrixContainer}
                           >
-                            {weekDayArray.map((day) => {
+                            {weekArray.map((dayTouple) => {
+                              const day = dayTouple[0];
+                              const daySchedule = dayTouple[1];
+                              if (!day || !daySchedule) throw new Error("this is not supposed to happen");
+
                               return (
                                 <Box
                                   data-in-range={inRange(day, startOfMonth(firstofMonth), endOfMonth(firstofMonth))}
@@ -181,7 +190,6 @@ export const RangeSelect: React.FC = () => {
                                     !isEqual(day, selected[0]) &&
                                     !isEqual(day, selected[selected.length - 1])
                                   }
-                                  data-origin={isEnd(day)}
                                   data-end={isStart(day)}
                                   data-dont-round-left={
                                     isAtPole(day) && !isOriginDay() && (isFloorBoundStart(day) || isFloorBoundEnd(day))
@@ -189,6 +197,7 @@ export const RangeSelect: React.FC = () => {
                                   data-dont-round-right={
                                     isAtPole(day) && !isOriginDay() && (isCeilBoundStart(day) || isCeilBoundEnd(day))
                                   }
+                                  data-bin={daySchedule.length > 0}
                                   key={`${day}`}
                                   onClick={() => {
                                     if (selected.length === 0) {
