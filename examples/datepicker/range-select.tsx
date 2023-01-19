@@ -119,16 +119,16 @@ export const RangeSelect: React.FC = () => {
               />
 
               {calendar.map((month) => {
-                const firstWeek = month[0][1]
-                if(!firstWeek) throw new Error("this is not supposed to happen")
-                const firstWeekDayArray = [...firstWeek.keys()]
-                const firstofMonth = firstWeekDayArray.filter(el => el.getDate() === 1)[0]
-               
+                const firstWeek = month[0][1];
+                if (!firstWeek) throw new Error("this is not supposed to happen");
+                const firstWeekDayArray = [...firstWeek.keys()];
+                const firstofMonth = firstWeekDayArray.filter((el) => el.getDate() === 1)[0];
+
                 return (
                   <Text key={firstofMonth.toDateString()} sx={styles.navigationLabel}>
                     {format(firstofMonth, "MMMM yyyy")}
                   </Text>
-                )
+                );
               })}
 
               <IconButton
@@ -142,10 +142,10 @@ export const RangeSelect: React.FC = () => {
 
             <Stack direction="row">
               {calendar.map((month) => {
-                const firstWeek = month[0][1]
-                if(!firstWeek) throw new Error("this is not supposed to happen")
-                const firstWeekDayArray = [...firstWeek.keys()]
-                const firstofMonth = firstWeekDayArray.filter(el => el.getDate() === 1)[0]
+                const firstWeek = month[0][1];
+                if (!firstWeek) throw new Error("this is not supposed to happen");
+                const firstWeekDayArray = [...firstWeek.keys()];
+                const firstofMonth = firstWeekDayArray.filter((el) => el.getDate() === 1)[0];
 
                 return (
                   <Box w="50%" key={month[0][0].toDateString()}>
@@ -156,7 +156,7 @@ export const RangeSelect: React.FC = () => {
                             <Box key={`${day}`} sx={styles.dayLabel}>
                               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
                             </Box>
-                          )
+                          );
                         })}
                       </Box>
 
@@ -225,7 +225,7 @@ export const RangeSelect: React.FC = () => {
                       })}
                     </Box>
                   </Box>
-                )
+                );
               })}
             </Stack>
 
