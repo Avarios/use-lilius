@@ -254,11 +254,6 @@ export interface Returns {
   maxSchedule: (date: Date) => boolean;
 
   /**
-   * Determine
-   */
-  isinSchedule: (date: Date) => boolean;
-
-  /**
    * A matrix of days based on the current viewing date.
    */
   calendar: [Date, Map<Date, Schedule[]>?][][];
@@ -393,8 +388,6 @@ export const useLilius = ({
 
   const maxSchedule = (date: Date) => schedule.length > 0 && schedule[schedule.length - 1].end >= date;
 
-  const isinSchedule = (date: Date) => minSchedule(date) && maxSchedule(date);
-
   const isOnSameDay = (start: Date, end: Date, date: Date) => {
     const startofDay = date;
     const endofDay = endOfDay(date);
@@ -494,7 +487,6 @@ export const useLilius = ({
     setSchedule,
     minSchedule,
     maxSchedule,
-    isinSchedule,
     calendar,
   };
 };

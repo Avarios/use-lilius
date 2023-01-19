@@ -35,7 +35,6 @@ export const RangeSelect: React.FC = () => {
     select,
     selected,
     selectRange,
-    viewing,
     viewNextMonth,
     viewPreviousMonth,
     viewToday,
@@ -119,11 +118,18 @@ export const RangeSelect: React.FC = () => {
                 sx={styles.navigationButton}
               />
 
-              {calendar.map(([[firstDay]]) => (
-                <Text key={firstDay.toDateString()} sx={styles.navigationLabel}>
-                  {format(firstDay, "MMMM yyyy")}
-                </Text>
-              ))}
+              {calendar.map((month) => {
+                const firstWeek = month[0][1]
+                if(!firstWeek) throw new Error("this is not supposed to happen")
+                const firstWeekDayArray = [...firstWeek.keys()]
+                const firstofMonth = firstWeekDayArray.filter(el => el.getDate() === 1)[0]
+               
+                return (
+                  <Text key={firstofMonth.toDateString()} sx={styles.navigationLabel}>
+                    {format(firstofMonth, "MMMM yyyy")}
+                  </Text>
+                )
+              })}
 
               <IconButton
                 aria-label="Next Month"
@@ -135,85 +141,92 @@ export const RangeSelect: React.FC = () => {
             </Box>
 
             <Stack direction="row">
-              {calendar.map((month) => (
-                <Box w="50%" key={month[0][0].toDateString()}>
-                  <Box sx={styles.calendarContainer}>
-                    <Box sx={styles.dayLabelContainer}>
-                      {month[0].map((day) => (
-                        <Box key={`${day}`} sx={styles.dayLabel}>
-                          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
-                        </Box>
-                      ))}
-                    </Box>
+              {calendar.map((month) => {
+                const firstWeek = month[0][1]
+                if(!firstWeek) throw new Error("this is not supposed to happen")
+                const firstWeekDayArray = [...firstWeek.keys()]
+                const firstofMonth = firstWeekDayArray.filter(el => el.getDate() === 1)[0]
 
-                    {month.map((week) => {
-                      const weekDayMap = week[1];
-                      if (!weekDayMap) throw new Error("this is not a date");
+                return (
+                  <Box w="50%" key={month[0][0].toDateString()}>
+                    <Box sx={styles.calendarContainer}>
+                      <Box sx={styles.dayLabelContainer}>
+                        {firstWeekDayArray.map((day) => {
+                          return (
+                            <Box key={`${day}`} sx={styles.dayLabel}>
+                              {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][getDay(day)]}
+                            </Box>
+                          )
+                        })}
+                      </Box>
 
-                      const weekDayArray = [...weekDayMap];
+                      {month.map((week) => {
+                        const weekDayMap = week[1];
+                        if (!weekDayMap) throw new Error("this is not a date");
+                        const weekDayArray = [...weekDayMap.keys()];
 
-                      return (
-                        <Box
-                          key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
-                          sx={styles.calendarMatrixContainer}
-                        >
-                          {weekDayArray.map((el) => {
-                            const day = el[0];
-                            return (
-                              <Box
-                                data-in-range={inRange(day, startOfMonth(viewing), endOfMonth(viewing))}
-                                data-selected={isAtPole(day)}
-                                data-today={isToday(day)}
-                                data-dont-round={
-                                  isSelected(day) &&
-                                  !isEqual(day, selected[0]) &&
-                                  !isEqual(day, selected[selected.length - 1])
-                                }
-                                data-origin={isEnd(day)}
-                                data-end={isStart(day)}
-                                data-dont-round-left={
-                                  isAtPole(day) && !isOriginDay() && (isFloorBoundStart(day) || isFloorBoundEnd(day))
-                                }
-                                data-dont-round-right={
-                                  isAtPole(day) && !isOriginDay() && (isCeilBoundStart(day) || isCeilBoundEnd(day))
-                                }
-                                key={`${day}`}
-                                onClick={() => {
-                                  if (selected.length === 0) {
-                                    select(day);
-                                  } else if (isSelected(day)) {
-                                    if (selected.length === 1) {
-                                      selectRange(selected[0], day, true);
-                                    } else {
-                                      const start = selected[0];
-                                      const end = day;
-                                      let range: Date[] = [];
-                                      if (start > end) {
-                                        range = eachDayOfInterval({ start: end, end: start }).reverse();
-                                      } else {
-                                        range = eachDayOfInterval({ start, end });
-                                      }
-                                      const diff = selected.filter((d) =>
-                                        range.map((a) => a.getTime()).includes(d.getTime()),
-                                      );
-                                      selectRange(diff[0], diff[diff.length - 1], true);
-                                    }
-                                  } else {
-                                    selectRange(selected[0], day, true);
+                        return (
+                          <Box
+                            key={`month-${month[0][0].toDateString()}-week-${week[0]}`}
+                            sx={styles.calendarMatrixContainer}
+                          >
+                            {weekDayArray.map((day) => {
+                              return (
+                                <Box
+                                  data-in-range={inRange(day, startOfMonth(firstofMonth), endOfMonth(firstofMonth))}
+                                  data-selected={isAtPole(day)}
+                                  data-today={isToday(day)}
+                                  data-dont-round={
+                                    isSelected(day) &&
+                                    !isEqual(day, selected[0]) &&
+                                    !isEqual(day, selected[selected.length - 1])
                                   }
-                                }}
-                                sx={styles.calendarMatrixDay}
-                              >
-                                <Text>{format(day, "dd")}</Text>
-                              </Box>
-                            );
-                          })}
-                        </Box>
-                      );
-                    })}
+                                  data-origin={isEnd(day)}
+                                  data-end={isStart(day)}
+                                  data-dont-round-left={
+                                    isAtPole(day) && !isOriginDay() && (isFloorBoundStart(day) || isFloorBoundEnd(day))
+                                  }
+                                  data-dont-round-right={
+                                    isAtPole(day) && !isOriginDay() && (isCeilBoundStart(day) || isCeilBoundEnd(day))
+                                  }
+                                  key={`${day}`}
+                                  onClick={() => {
+                                    if (selected.length === 0) {
+                                      select(day);
+                                    } else if (isSelected(day)) {
+                                      if (selected.length === 1) {
+                                        selectRange(selected[0], day, true);
+                                      } else {
+                                        const start = selected[0];
+                                        const end = day;
+                                        let range: Date[] = [];
+                                        if (start > end) {
+                                          range = eachDayOfInterval({ start: end, end: start }).reverse();
+                                        } else {
+                                          range = eachDayOfInterval({ start, end });
+                                        }
+                                        const diff = selected.filter((d) =>
+                                          range.map((a) => a.getTime()).includes(d.getTime()),
+                                        );
+                                        selectRange(diff[0], diff[diff.length - 1], true);
+                                      }
+                                    } else {
+                                      selectRange(selected[0], day, true);
+                                    }
+                                  }}
+                                  sx={styles.calendarMatrixDay}
+                                >
+                                  <Text>{format(day, "dd")}</Text>
+                                </Box>
+                              );
+                            })}
+                          </Box>
+                        );
+                      })}
+                    </Box>
                   </Box>
-                </Box>
-              ))}
+                )
+              })}
             </Stack>
 
             <Divider sx={styles.divider} />
