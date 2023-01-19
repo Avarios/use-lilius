@@ -241,6 +241,9 @@ export interface Returns {
    */
   schedule: Schedule[];
 
+  /**
+   * Override the currently selected Schedule.
+   */
   setSchedule: React.Dispatch<React.SetStateAction<Schedule[]>>;
 
   /**
