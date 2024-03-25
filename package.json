@@ -91,6 +91,6 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "date-fns": "^3.0.0"
+    "date-fns": "^3.6.0"
   }
 }
