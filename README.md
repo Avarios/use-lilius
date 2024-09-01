@@ -11,6 +11,7 @@
   [![DeepScan grade](https://deepscan.io/api/teams/16450/projects/19746/branches/517163/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16450&pid=19746&bid=517163)
   [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-pink.svg)](https://conventionalcommits.org)
   [![License](https://img.shields.io/github/license/its-danny/use-lilius)](LICENSE)
+  ![Looking for maintainer](https://img.shields.io/badge/status-looking%20for%20maintainer-orange)
 </div>
 
 ## Installation
